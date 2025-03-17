@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dcecff;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color: #2e0066;
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-around;
+}
+.card {
+    background-color: #9400FF;
+    width: 300px;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 50px auto;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}
+.note {
+    color: gold;
+}
+.plateformes img {      
+    width: 25px;
+    margin-right: 5px;
+}
