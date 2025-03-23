@@ -1,0 +1,84 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E4F1FF; /* Bleu clair */
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}
+
+#fenetre {
+    background-color: #AED2FF;
+    display: flex;
+    align-items: stretch; /* Aligner en haut */
+    justify-content: center; /* Aligner à gauche */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.formulaire {
+    display: flex;
+    align-items: flex-start; /* Aligner les éléments à gauche */
+    flex-direction: column;
+    justify-content: flex-start; /* Garder le contenu en haut */
+    padding : 30px;
+}
+
+.formulaire h3 {
+    text-align: center;
+    font-size: 22px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.formulaire ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Champs de formulaire */
+.formulaire input {
+    width: 80%;
+    padding: 8px;
+    margin: 5px 30px;
+    border: 1px solid #E4F1FF;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Boutons */
+input[type="submit"] {
+    background-color: #9400FF; /* Violet flashy */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 85%;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+
+input[type="submit"]:hover {
+    background-color: #5B2880;
+}
+
+.separator {
+    border: 2px solid black; /* Bordure temporaire pour voir si la div existe */
+}
+
+.oubli {
+    width: 100%; /* Aligné avec les inputs */
+    text-align: right; /* Place le texte à droite */
+}
+
+.oubli a {
+    font-size: 10px; /* Réduit la taille du texte */
+}
+
+.oubli a:hover {
+    text-decoration: underline; /* Effet au survol */
+    text-decoration: none; /* Enlève le soulignement */
+}
