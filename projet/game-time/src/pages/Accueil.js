@@ -1,18 +1,11 @@
 import "../styles/Accueil.css";
 import { Link } from 'react-router-dom';  // Importation de Link pour la navigation
-
+import Header from "../pages/Header";  // Importation du bandeau Header du haut
 
 const App = () => {
   return (
     <div className="container">
-      <header className="header">
-        <div className="logo">🎮</div>
-        <nav>
-          <a href="#">Home</a>
-          <input type="text" placeholder="Recherche..." className="search" />
-          <a href="#" className="profile">Profil</a>
-        </nav>
-      </header>
+      <Header />
 
       <section className="hero">
         <h1>Rejoignez la plus grande communauté de fans de jeux vidéo au monde</h1>

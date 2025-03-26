@@ -1,0 +1,33 @@
+/* Header.css */
+.header {
+    background-color: #1a0339;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    top: 0;  /* Positionne le header tout en haut */
+    left: 0; /* Colle le header au bord gauche */
+    right: 0; /* Colle le header au bord droit */
+}
+
+/* Navigation dans l’en-tête */
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Champ de recherche */
+.search {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Ajouter un espace en haut de la section qui suit le header */
+.container {
+    padding-top: 80px; /* Compense la hauteur du header fixé */
+}
