@@ -1,13 +1,14 @@
 /* Header.css */
 .header {
+    font-size: 5vw;
+    position: relative;
+    padding: 0;
     background-color: #1a0339;
     color: white;
-    padding: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    position: fixed;
     top: 0;  /* Positionne le header tout en haut */
     left: 0; /* Colle le header au bord gauche */
     right: 0; /* Colle le header au bord droit */
@@ -15,14 +16,22 @@
 
 /* Navigation dans l’en-tête */
 .header nav {
+    margin: 2vw;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 3vw;
+}
+
+/* logo */
+.logo{
+    margin-left: 3vw;
+    font-size: 7vw;
 }
 
 /* Champ de recherche */
 .search {
-    padding: 5px;
+    padding: 0;
+    margin: 0;
     border-radius: 5px;
     border: none;
     font-size: 3vw;
