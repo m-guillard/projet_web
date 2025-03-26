@@ -1,18 +1,20 @@
-const express = require('express')
-const http = require('http');
-const app = express()
-const MongoClient = require('mongodb').MongoClient
+const express = require('express');
+const cors = require('cors');
+const mongoose = require("mongoose");
+const login = require("./routes/login.js")
 
-MongoClient.connect('mongodb://localhost:27017/animals', (err, client) => {
-  if (err) throw err
+const PORT = process.env.PORT || 3000;
+const app = express();
+const mongoDB = "mongodb://127.0.0.1/my_database";
 
-//   const db = client.db('animals')
+app.use(cors())
 
-//   db.collection('mammals').find().toArray((err, result) => {
-//     if (err) throw err
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 
-//     console.log(result)
-//   })
-})
-
-server.listen(process.env.PORT || 3000);
+// Start the Express server
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
