@@ -9,7 +9,7 @@ const Header = () => {
       <nav>
         <Link to="/">Home</Link>
         <input type="text" placeholder="Recherche..." className="search" />
-        <a href="#" className="profile">Profil</a>
+        <a href="/Profile" className="profile">Profil</a>
       </nav>
     </header>
   );

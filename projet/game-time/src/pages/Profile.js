@@ -1,17 +1,11 @@
 import "../styles/profile.css";
-import { Card, CardMedia } from '@mui/material';
+import { Avatar} from '@mui/material';
+import Header from "./Header";
 
 function Profile(){
-    return(<div>
-        <header>INSERT HEADER FROM ALICE</header>
-        <div type="presentation">
-            {/* <Card> */}
-                <CardMedia
-                component="img"
-                width="100"
-                height="100"/>
-            {/* </Card> */}
-        </div>
+    return(<div id="fenetre">
+        <Header/>
+        <Avatar sx={{width:"30vw",height:"30vw",margin:"10vw"}}/>
     </div>)
 }
 
