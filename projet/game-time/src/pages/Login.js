@@ -1,5 +1,6 @@
-import React from 'react';
 import "../styles/login.css";
+import Header from "../pages/Header";
+
 
 function Champ({nom, type_champ="text", mdp=false}){
     return (
@@ -19,7 +20,9 @@ function Bouton({nom}){
 }
 
 function Login(){
-    return(<div id="fenetre">
+    return(<div>
+    <Header />
+    <div id="fenetre">
         <div className="formulaire">
             <Titre nom={"Connexion"} />
             <form action="" method="POST">
@@ -39,6 +42,7 @@ function Login(){
                 <Champ nom={"Confirmation du mot de passe"} type_champ="password" />
                 <Bouton nom={"S'inscrire"} />
             </form>
+        </div>
         </div>
     </div>)
 }

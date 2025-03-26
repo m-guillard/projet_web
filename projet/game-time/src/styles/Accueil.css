@@ -1,0 +1,96 @@
+/* Margin = espace
+Margin-top = espace au dessus
+Padding = espace interne
+background-color = fond
+border = bordure, "None"
+border-radius = arrondir coins
+cursor = changer curseur au survol
+font-size = changer taille texte
+font-style : italic = sébonnn
+<ul> : liste ordonnée à points
+*/
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #e3f2fd;
+  width: 100%;
+  padding: 0;
+}
+
+/* Conteneur principal qui centre le contenu */
+.container {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+
+
+/*  Section principale (bannière)  */
+.hero {
+  background-color: #90caf9;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+/*  Titre principal de la section hero  */
+.hero h1 {
+  font-size: 24px;
+}
+
+/*  Texte secondaire en italique, genre "Non c'est pas pompé sur TVTime  */
+.subtext {
+  font-style: italic;
+}
+
+/* Pour la liste à point */
+ul {
+  text-align: left; /* Aligner le texte à gauche */
+  padding-left: 20px; /* Ajuster l'espace entre le bord et les puces */
+  margin: 0 auto; /* Centrer la liste tout en gardant le texte à gauche */
+  /*display: inline-block;*/ /* Évite que la liste prenne toute la largeur */
+}
+
+/*  Bouton d'inscription/connexion  */
+.btn {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d8bfd8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*  Section contenant les jeux  */
+.games-section {
+  padding: 20px;  /* Espace autour section */
+}
+
+/*  Grille des jeux (alignement des cartes de jeu)  */
+.games-grid {
+  display: flex; /* Utilise Flexbox pour aligner les jeux */
+  justify-content: center; /* Centre les éléments horizontalement */
+  gap: 15px; /* Ajoute un espace entre les cartes */
+  margin-bottom: 20px; /* Ajoute un espace sous la grille */
+}
+
+/*  Carte individuelle pour un jeu  */
+.game-card {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  border-radius: 10px; /* Coins arrondis */
+}
+
+/*  Pied de page  */
+.footer {
+  background-color: #1a0339;
+  color: white;
+  padding: 10px;
+  margin-top: 20px; /* Ajoute un espace entre la section précédente et le footer */
+}
