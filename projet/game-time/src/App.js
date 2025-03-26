@@ -1,12 +1,19 @@
-import Login from './pages/Login.js'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  // Import des éléments nécessaires
+import Accueil from './pages/Accueil';  // Page Accueil
+import Login from './pages/Login';  // Page Login (si elle existe)
 import './App.css';
 
 function App() {
   return (
-        <div>
-          <Login /> {/* Affichage de la page Login */}
-        </div>
-      );
+    <Router> {/* Encapsule l'application avec BrowserRouter */}
+      <div>
+        <Routes>
+          <Route path="/" element={<Accueil />} />  {/* Route pour la page d'accueil */}
+          <Route path="/login" element={<Login />} />  {/* Route pour la page Login */}
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
