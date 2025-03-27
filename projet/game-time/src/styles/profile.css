@@ -2,7 +2,6 @@
     background-color: #AED2FF;
     display: flex;
     width: 100vw;
-    height: 100vh;
     align-items: stretch; /* Aligner en haut */
     justify-content: start; /* Aligner à gauche */
     flex-direction: column;
@@ -10,9 +9,34 @@
     border-radius: 0;
 }
 
+#titreinfos{
+    margin: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: center;
+}
+
+.infos{
+    flex-grow: 1;
+    background-color: #e5e5e5;
+    border: solid 0.5vw #000000;
+    border-radius: 2vw;
+    margin-top: 10vw;
+    margin-right: 10vw;
+}
+
 .presentation {
+    font-size: 2vw;
     position: relative;
     display: flex;
+    flex-direction: row;
     align-items: stretch; /* Aligner en haut */
     justify-content: left; /* Aligner à gauche */
 }
