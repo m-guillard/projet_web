@@ -22,7 +22,7 @@ function Bouton({nom}){
 function Login(){
     return(<div>
     <Header />
-    <div id="fenetre">
+    <div id="fenetre_login">
         <div className="formulaire">
             <Titre nom={"Connexion"} />
             <form action="" method="POST">
