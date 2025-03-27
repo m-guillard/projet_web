@@ -1,6 +1,6 @@
 /* Header.css */
 .header {
-    font-size: 5vw;
+    font-size: 3vw;
     position: relative;
     padding: 0;
     background-color: #1a0339;
@@ -20,12 +20,14 @@
     display: flex;
     align-items: center;
     gap: 3vw;
+    width: 100%;
 }
 
 /* logo */
 .logo{
-    margin-left: 3vw;
-    font-size: 7vw;
+    margin-left: 1vw;
+    margin-bottom: 1vw;
+    font-size: 4vw;
 }
 
 /* Champ de recherche */
@@ -34,10 +36,11 @@
     margin: 0;
     border-radius: 5px;
     border: none;
-    font-size: 3vw;
+    font-size: 2vw;
+    width: 100%;
 }
 
 /* Ajouter un espace en haut de la section qui suit le header */
 .container {
-    padding-top: 80px; /* Compense la hauteur du header fixé */
+    width: 100%;
 }

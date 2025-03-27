@@ -11,16 +11,23 @@ font-style : italic = sébonnn
 */
 
 body {
+  position: relative;
   margin: 0;
+  margin-left: 0vw;
   font-family: Arial, sans-serif;
   background-color: #e3f2fd;
   width: 100%;
-  padding: 0;
+  padding: 0vw;
+}
+
+#root{
+  width: 100vw;
 }
 
 /* Conteneur principal qui centre le contenu */
 .container {
   margin: 0;
+  margin-left: 0vw;
   width: 100%;
   text-align: center;
   padding: 0;
@@ -31,15 +38,16 @@ body {
 /*  Section principale (bannière)  */
 .hero {
   background-color: #90caf9;
-  position: relative;
-  padding: 20px;
+  position: flex;
   width: 100%;
   left: 0;
   right: 0;
+  margin-top: 0vw;
 }
 
 /*  Titre principal de la section hero  */
 .hero h1 {
+  margin-top: 0vw;
   font-size: 24px;
 }
 
@@ -51,7 +59,7 @@ body {
 /* Pour la liste à point */
 ul {
   text-align: left; /* Aligner le texte à gauche */
-  padding-left: 20px; /* Ajuster l'espace entre le bord et les puces */
+  padding-left: 40px; /* Ajuster l'espace entre le bord et les puces */
   margin: 0 auto; /* Centrer la liste tout en gardant le texte à gauche */
   /*display: inline-block;*/ /* Évite que la liste prenne toute la largeur */
 }
@@ -68,14 +76,14 @@ ul {
 
 /*  Section contenant les jeux  */
 .games-section {
-  padding: 20px;  /* Espace autour section */
+  margin: 10;
 }
 
 /*  Grille des jeux (alignement des cartes de jeu)  */
 .games-grid {
   display: flex; /* Utilise Flexbox pour aligner les jeux */
   justify-content: center; /* Centre les éléments horizontalement */
-  gap: 15px; /* Ajoute un espace entre les cartes */
+  gap: 20px; /* Ajoute un espace entre les cartes */
   margin-bottom: 20px; /* Ajoute un espace sous la grille */
 }
 
