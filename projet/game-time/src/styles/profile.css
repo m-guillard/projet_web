@@ -24,6 +24,7 @@
 }
 
 .infos{
+    text-align: center;
     flex-grow: 1;
     background-color: #e5e5e5;
     border: solid 0.5vw #000000;

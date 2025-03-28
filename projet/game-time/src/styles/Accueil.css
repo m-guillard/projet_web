@@ -48,30 +48,33 @@ body {
 /*  Titre principal de la section hero  */
 .hero h1 {
   margin-top: 0vw;
-  font-size: 24px;
+  font-size: calc(7px + 2.5vw);
 }
 
 /*  Texte secondaire en italique, genre "Non c'est pas pompé sur TVTime  */
 .subtext {
+  font-size: calc(7px + 1.2vw);
   font-style: italic;
 }
 
 /* Pour la liste à point */
 ul {
+  font-size: calc(7px + 1.5vw);
   text-align: left; /* Aligner le texte à gauche */
-  padding-left: 40px; /* Ajuster l'espace entre le bord et les puces */
+  padding-left: calc(7px + 4vw); /* Ajuster l'espace entre le bord et les puces */
   margin: 0 auto; /* Centrer la liste tout en gardant le texte à gauche */
   /*display: inline-block;*/ /* Évite que la liste prenne toute la largeur */
 }
 
 /*  Bouton d'inscription/connexion  */
 .btn {
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 1vw;
+  padding: 1vw;
   background-color: #d8bfd8;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5vw;
   cursor: pointer;
+  font-size: calc(7px + 1.2vw);
 }
 
 /*  Section contenant les jeux  */
@@ -83,22 +86,23 @@ ul {
 .games-grid {
   display: flex; /* Utilise Flexbox pour aligner les jeux */
   justify-content: center; /* Centre les éléments horizontalement */
-  gap: 20px; /* Ajoute un espace entre les cartes */
-  margin-bottom: 20px; /* Ajoute un espace sous la grille */
+  gap: 2vw; /* Ajoute un espace entre les cartes */
+  margin-bottom: 2vw; /* Ajoute un espace sous la grille */
 }
 
 /*  Carte individuelle pour un jeu  */
 .game-card {
-  width: 100px;
-  height: 100px;
+  width: calc(70px + 10vw);
+  height: calc(70px + 10vw);
   background-color: lightgray;
-  border-radius: 10px; /* Coins arrondis */
+  border-radius: 1vw; /* Coins arrondis */
 }
 
 /*  Pied de page  */
 .footer {
   background-color: #1a0339;
   color: white;
-  padding: 10px;
-  margin-top: 20px; /* Ajoute un espace entre la section précédente et le footer */
+  padding: 1vw;
+  margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer */
+  font-size: calc(7px + 1.5vw);
 }

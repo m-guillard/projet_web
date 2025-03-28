@@ -1,6 +1,7 @@
 import "../styles/Accueil.css";
 import { Link } from 'react-router-dom';  // Importation de Link pour la navigation
 import Header from "../pages/Header";  // Importation du bandeau Header du haut
+import { Card } from "@mui/material";
 
 const App = () => {
   return (
