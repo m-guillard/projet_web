@@ -48,20 +48,23 @@ body {
 /*  Titre principal de la section hero  */
 .hero h1 {
   margin-top: 0vw;
-  font-size: calc(7px + 2.5vw);
+  font-size: calc(14px + 2.5vw);
 }
 
+.games-section h2{
+  font-size: calc(14px + 2vw);
+}
 /*  Texte secondaire en italique, genre "Non c'est pas pompé sur TVTime  */
 .subtext {
-  font-size: calc(7px + 1.2vw);
+  font-size: calc(14px + 1.2vw);
   font-style: italic;
 }
 
 /* Pour la liste à point */
 ul {
-  font-size: calc(7px + 1.5vw);
+  font-size: calc(14px + 1.5vw);
   text-align: left; /* Aligner le texte à gauche */
-  padding-left: calc(7px + 4vw); /* Ajuster l'espace entre le bord et les puces */
+  padding-left: calc(14px + 4vw); /* Ajuster l'espace entre le bord et les puces */
   margin: 0 auto; /* Centrer la liste tout en gardant le texte à gauche */
   /*display: inline-block;*/ /* Évite que la liste prenne toute la largeur */
 }
@@ -69,12 +72,13 @@ ul {
 /*  Bouton d'inscription/connexion  */
 .btn {
   margin-top: 1vw;
+  margin-bottom: 1vw;
   padding: 1vw;
   background-color: #d8bfd8;
   border: none;
   border-radius: 0.5vw;
   cursor: pointer;
-  font-size: calc(7px + 1.2vw);
+  font-size: calc(14px + 1.2vw);
 }
 
 /*  Section contenant les jeux  */
