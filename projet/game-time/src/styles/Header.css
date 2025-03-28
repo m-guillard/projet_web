@@ -1,6 +1,6 @@
 /* Header.css */
 .header {
-    font-size: calc(7px + 3vw);
+    font-size: calc(14px + 3vw);
     position: relative;
     padding: 0;
     background-color: #1a0339;
@@ -27,7 +27,7 @@
 .logo{
     margin-left: 1vw;
     margin-bottom: 1vw;
-    font-size: calc(7px + 4vw);
+    font-size: calc(14px + 4vw);
 }
 
 /* Champ de recherche */
@@ -36,7 +36,7 @@
     margin: 0;
     border-radius: calc(4px + 0.5vw);
     border: none;
-    font-size: calc(7px + 2vw);
+    font-size: calc(14px + 2vw);
     width: 100%;
 }
 
