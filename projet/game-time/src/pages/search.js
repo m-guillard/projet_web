@@ -65,6 +65,59 @@ export default function Search({datagame,dataprofil}) {
       return null;
     }
 
+    function theme(){
+      if(!searchShow){
+        return(
+          <div class="theme-container">
+          <div class="themebox" style={{ backgroundColor: "lightblue" }}>
+            <p>HORROR</p>
+          </div>
+          <div class="themebox" style={{ backgroundColor: "red" }}>
+            <p>ACTION</p>
+          </div>
+          <div class="themebox" style={{ backgroundColor: "yellow" }}>
+            <p>AVENTURE</p>
+          </div>
+          <div class="themebox" style={{ backgroundColor: "lightblue" }}>
+            <p>RPG</p>
+          </div>
+          <div class="themebox" style={{ backgroundColor: "red"}}>
+            <p>SANDBOX</p>
+          </div>
+          <div class="themebox" style={{ backgroundColor: "yellow" }}>
+            <p>FPS</p>
+          </div>
+          <div class="themebox" style={{ backgroundColor: "lightblue" }}>
+            <p>MOBA</p>
+          </div>
+        </div>
+        )
+      }
+    }
+
+    function result(){
+      if (searchShow){
+        return(
+        <div class="result-container">
+          <div class="filter-container">
+            <h1>Filter</h1>
+          </div>
+          <div class="game-container">
+            <Searchlist person={filteredprofil} games={filteredgame}/>
+          </div>
+        </div>)
+      }
+    }
+
+    function handleSearch(){
+      if(value===""){
+        setSearchShow(false);
+      }
+      else {
+        setSearchShow(true);
+      }
+    }
+
     return (
     <div id="search">
         <div class="navbar">
@@ -79,18 +132,24 @@ export default function Search({datagame,dataprofil}) {
               value={value}
               onChange={(e) => {
                 setValue(e.target.value);
-                if(e.target.value===""){
-                  setSearchShow(false);
-                }
-                else {
-                  setSearchShow(true);
-                }
               }}/>
-            <div>
-              {search()}
-            </div>
+              <button onClick={handleSearch} style={{ padding: '8px 16px' }}>
+                Rechercher
+              </button>
+            
         </div>
-        
+
+        <div>
+          {theme()}
+        </div>
+
+        <div>
+          {result()}
+        </div>      
     </div>
     )
 }
+
+/*<div>
+    {search()}
+  </div>*/
