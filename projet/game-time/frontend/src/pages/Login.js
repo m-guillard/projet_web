@@ -20,7 +20,7 @@ function Bouton({nom}){
 }
 
 function Login(){
-    return(<div>
+    return(<div id="page_login">
     <Header />
     <div id="fenetre_login">
         <div className="formulaire">

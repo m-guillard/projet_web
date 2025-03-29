@@ -1,12 +1,10 @@
 /* Styles généraux */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #E4F1FF; /* Bleu clair */
+
+#page_login {
     display: flex;
     align-items: center;
     flex-direction: column; 
 }
-
 #fenetre_login {
     background-color: #AED2FF;
     display: flex;

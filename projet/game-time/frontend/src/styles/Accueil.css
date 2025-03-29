@@ -61,7 +61,7 @@ body {
 }
 
 /* Pour la liste à point */
-ul {
+.hero ul {
   font-size: calc(14px + 1.5vw);
   text-align: left; /* Aligner le texte à gauche */
   padding-left: calc(14px + 4vw); /* Ajuster l'espace entre le bord et les puces */
