@@ -35,7 +35,6 @@ export default App;
 */
 
 import { useEffect, useState } from "react";
-import { fetchGameByName } from "../../server/database/fetchGames";
 import "../styles/jeux.css";
 
 const App = () => {
@@ -43,7 +42,7 @@ const App = () => {
 
     useEffect(() => {
         const loadGame = async () => {
-            const gameData = await fetchGameByName("Destiny 2"); // Récupère Destiny 2
+            const gameData = await fetch("http://localhost:5000/api/games"); // Récupère Destiny 2
             setGame(gameData);
         };
 

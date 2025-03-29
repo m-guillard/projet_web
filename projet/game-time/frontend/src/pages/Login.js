@@ -1,5 +1,5 @@
 import "../styles/login.css";
-import Header from "../pages/Header";
+import Header from "./Header";
 
 
 function Champ({nom, type_champ="text", mdp=false}){
