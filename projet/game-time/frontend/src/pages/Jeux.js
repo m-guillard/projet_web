@@ -35,7 +35,7 @@ export default App;
 */
 
 import { useEffect, useState } from "react";
-import { fetchGameByName } from "./fetchGames";
+import { fetchGameByName } from "../../server/database/fetchGames";
 import "../styles/jeux.css";
 
 const App = () => {
