@@ -61,7 +61,7 @@ input[type="submit"]:hover {
 }
 
 .separator {
-    margin: 0vw 6vw;
+    margin: 0vw 3vw;
     border: 2px solid black; /* Bordure temporaire pour voir si la div existe */
 }
 
