@@ -10,13 +10,11 @@
 }
 
 #titreinfos{
-    margin: 2vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: calc(14px + 2vw);
 }
 
 .avatar{
+    margin: calc(14px + 10vw) calc(14px + 3vw) calc(14px + 2vw) calc(14px + 3vw);
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -25,19 +23,51 @@
 
 .infos{
     text-align: center;
+    overflow: scroll;
     flex-grow: 1;
     background-color: #e5e5e5;
-    border: solid 0.5vw #000000;
-    border-radius: 2vw;
-    margin-top: 10vw;
-    margin-right: 10vw;
+    border: solid calc(2px + 0.5vw) #000000;
+    border-radius: calc(14px + 2vw);
+    margin-top: calc(14px + 10vw);
+    margin-right: calc(14px + 3vw);
 }
 
 .presentation {
-    font-size: 2vw;
+    font-size: calc(14px + 2vw);
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: stretch; /* Aligner en haut */
     justify-content: left; /* Aligner à gauche */
+}
+
+.css-18k2bs-MuiAvatar-root{
+    width: calc(50px + 20vw);
+    height: calc(50px + 20vw);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px){
+    .presentation{
+        flex-direction: column;
+        align-items: center;
+    }
+    .avatar{
+        align-self:auto;
+    }
+    .infos{
+        margin-right: 0;
+        margin-top: calc(7px + 5vw);
+    }
+    
 }

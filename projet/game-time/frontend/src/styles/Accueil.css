@@ -15,7 +15,7 @@ body {
   margin: 0;
   margin-left: 0vw;
   font-family: Arial, sans-serif;
-  background-color: #e3f2fd;
+  background-color: #E4F1FF;
   width: 100%;
   padding: 0vw;
 }
@@ -37,7 +37,7 @@ body {
 
 /*  Section principale (bannière)  */
 .hero {
-  background-color: #90caf9;
+  background-color: #AED2FF;
   position: flex;
   width: 100%;
   left: 0;
@@ -74,7 +74,8 @@ body {
   margin-top: 1vw;
   margin-bottom: 1vw;
   padding: 1vw;
-  background-color: #d8bfd8;
+  color: #dddddd;
+  background-color: #9400FF;
   border: none;
   border-radius: 0.5vw;
   cursor: pointer;
