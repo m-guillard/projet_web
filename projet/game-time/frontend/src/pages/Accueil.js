@@ -19,7 +19,7 @@ const App = () => {
           <li>bla bla bla bla bla bla bla</li>
         </ul>
 
-        <Link to="/login">
+        <Link to="/intro">
           <button className="btn">INSCRIPTION | CONNEXION</button>
         </Link>
       </section>
