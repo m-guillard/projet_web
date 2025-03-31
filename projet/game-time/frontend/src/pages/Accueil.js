@@ -1,9 +1,11 @@
 import "../styles/Accueil.css";
 import { Link } from 'react-router-dom';  // Importation de Link pour la navigation
 import Header from "./Header";  // Importation du bandeau Header du haut
-import { Card } from "@mui/material";
+import Card_Game from "./Cardgame";
 
 const App = () => {
+  
+  
   return (
     <div className="container">
       <Header />
@@ -26,12 +28,12 @@ const App = () => {
 
       <section className="games-section">
         <h2>🎮 Jeux les mieux notés</h2>
-        <div className="games-grid">
+        <Card_Game/>
+        {/* <div className="games-grid">
           <div className="game-card"></div>
           <div className="game-card"></div>
           <div className="game-card"></div>
-        </div>
-
+        </div> */}
         <h2>✨ À découvrir</h2>
         <div className="games-grid">
           <div className="game-card"></div>

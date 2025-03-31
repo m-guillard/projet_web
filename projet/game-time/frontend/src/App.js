@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  // Import des éléments nécessaires
 import Accueil from './pages/Accueil';  // Page Accueil
 import Login from './pages/Login';  // Page Login (si elle existe)
