@@ -1,18 +1,11 @@
 import "../styles/Accueil.css";
 import { Link } from 'react-router-dom';  // Importation de Link pour la navigation
 import Header from "./Header";  // Importation du bandeau Header du haut
-import { Card, Fab } from "@mui/material";
-import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
+import Card_Game from "./Cardgame";
 
 const App = () => {
-  const Arrow = ({direction, handleClick}) => {
-    return(
-    <Fab style={{alignSelf:"center",background:"transparent"}} onClick={handleClick}>
-      {direction === "left" ? <ArrowBackIos fontSize="10vw"/> : <ArrowForwardIos fontSize="10vw"/>}
-    </Fab>
-    )
-  }
+  
+  
   return (
     <div className="container">
       <Header />
@@ -35,13 +28,12 @@ const App = () => {
 
       <section className="games-section">
         <h2>🎮 Jeux les mieux notés</h2>
-        <div className="games-grid">
-          <Arrow direction={"left"} handleClick={()=>(0)}/>
+        <Card_Game/>
+        {/* <div className="games-grid">
           <div className="game-card"></div>
           <div className="game-card"></div>
           <div className="game-card"></div>
-          <Arrow direction={"right"} handleClick={()=>(0)}/>
-        </div>
+        </div> */}
         <h2>✨ À découvrir</h2>
         <div className="games-grid">
           <div className="game-card"></div>

@@ -1,0 +1,16 @@
+/*  Grille des jeux (alignement des cartes de jeu)  */
+.games-grid {
+    flex-direction: row;
+    display: flex; /* Utilise Flexbox pour aligner les jeux */
+    justify-content: center; /* Centre les éléments horizontalement */
+    gap: 2vw; /* Ajoute un espace entre les cartes */
+    margin-bottom: 2vw; /* Ajoute un espace sous la grille */
+}
+
+/*  Carte individuelle pour un jeu  */
+.game-card {
+    width: calc(70px + 10vw);
+    height: max-content;
+    background-color: lightgray;
+    border-radius: 1vw; /* Coins arrondis */
+}

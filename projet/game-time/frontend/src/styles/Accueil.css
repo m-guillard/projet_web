@@ -38,7 +38,6 @@ body {
 /*  Section principale (bannière)  */
 .hero {
   background-color: #AED2FF;
-  position: flex;
   width: 100%;
   left: 0;
   right: 0;
@@ -85,22 +84,6 @@ body {
 /*  Section contenant les jeux  */
 .games-section {
   margin: 10;
-}
-
-/*  Grille des jeux (alignement des cartes de jeu)  */
-.games-grid {
-  display: flex; /* Utilise Flexbox pour aligner les jeux */
-  justify-content: center; /* Centre les éléments horizontalement */
-  gap: 2vw; /* Ajoute un espace entre les cartes */
-  margin-bottom: 2vw; /* Ajoute un espace sous la grille */
-}
-
-/*  Carte individuelle pour un jeu  */
-.game-card {
-  width: calc(70px + 10vw);
-  height: calc(70px + 10vw);
-  background-color: lightgray;
-  border-radius: 1vw; /* Coins arrondis */
 }
 
 /*  Pied de page  */
