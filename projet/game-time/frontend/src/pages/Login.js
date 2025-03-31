@@ -25,6 +25,9 @@ function Login(){
     const navigate = useNavigate();
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    const [mail, setMail] = useState("");
+    const [birthday, setBirthday] = useState("");
+    const
 
     // Gestion connexion
     const handleSubmitConnexion = async (e) => {
@@ -59,11 +62,11 @@ function Login(){
         <div className="formulaire">
             <Titre nom={"Inscription"} />
             <form method="POST" action="http://localhost:5000/login">
-                <Champ nom={"Nom d'utilisateur"} />
-                <Champ nom={"Mail"} type_champ="email"/>
-                <Champ nom={"Date de naissance"} type_champ="date" />
-                <Champ nom={"Mot de passe"} type_champ="password" />
-                <Champ nom={"Confirmation du mot de passe"} type_champ="password" />
+                <Champ nom={"Nom d'utilisateur"} valeur={username} onChange={(e) => setUsername(e.target.value)}/>
+                <Champ nom={"Mail"} type_champ="email" valeur={mail} onChange={(e) => setMail(e.target.value)}/>
+                <Champ nom={"Date de naissance"} type_champ="date" valeur={birthday} onChange={(e) => setBirthday(e.target.value)}/>
+                <Champ nom={"Mot de passe"} type_champ="password" valeur={password} onChange={(e) => setPassword(e.target.value)}/>
+                <Champ nom={"Confirmation du mot de passe"} type_champ="password" valeur={password} onChange={(e) => setPassword(e.target.value)}/>
                 <Bouton nom={"S'inscrire"} />
             </form>
         </div>

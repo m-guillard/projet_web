@@ -2,7 +2,7 @@
 
 # dependencies
 /frontend/node_modules/.cache
-/frontend/node_modules/.cache
+/backend/node_modules/.cache
 /.pnp
 .pnp.js
 
