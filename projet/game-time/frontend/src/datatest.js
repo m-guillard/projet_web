@@ -38,7 +38,7 @@ const Profil = [
   
 
 const Game= [
-      { id: 1, name: "The Legend of Zelda", genre: "Aventure", rating: 9.5 },
+      { id: 1, name: "The Legend of Zelda", genre: "Adventure", rating: 9.5 },
       { id: 2, name: "God of War", genre: "Action", rating: 9.8 },
       { id: 3, name: "Minecraft", genre: "Sandbox", rating: 9.0 },
       { id: 4, name: "Cyberpunk 2077", genre: "RPG", rating: 7.5 },

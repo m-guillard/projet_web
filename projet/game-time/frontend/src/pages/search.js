@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/search.css";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 
 function Cardgame({game}){
@@ -37,6 +37,7 @@ function Searchlist({ person = [], games = [] }){
   )
 }
 
+
 const Scroll = (props) => {
   return( 
     <div class="scroll-menu">
@@ -48,48 +49,57 @@ const Scroll = (props) => {
 export default function Search({datagame,dataprofil}) {
     const [value, setValue] = useState("");
     const [searchShow, setSearchShow] = useState(false);
-    ///const [suggestions, setSuggestions] = useState([]);
-    const filteredgame = datagame.filter((item) =>
-      item.name.toLowerCase().includes(value.toLowerCase())
-    );
+    const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
+    const [selectedOptions, setSelectedOptions] = useState([]);
+
+    const [filteredgame,setFilteredGames] =useState( datagame.filter((item) =>
+      item.name.toLowerCase().includes(value.toLowerCase()) ))
     const filteredprofil = dataprofil.filter((item) =>
       item.name.toLowerCase().includes(value.toLowerCase())
     );
+    
+    useEffect(() => {
+      let filtered = datagame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+      if (selectedOptions.length > 0) {
+        filtered = filtered.filter(item => selectedOptions.includes(item.genre));
+      }
+      setFilteredGames(filtered);
+    }, [value, selectedOptions, datagame]);
 
-    function search(){
+    /*function search(){
       if (searchShow){
         return(<Scroll>
           <Searchlist person={filteredprofil} games={filteredgame}/>
         </Scroll>);
       }
       return null;
+    }*/
+
+
+    function handleSearch(){
+      if(value===""){
+        setSearchShow(false);
+      }
+      else {
+        setSearchShow(true);
+      }
     }
 
-    function theme(){
+    function handleCheckboxChange(e) {
+      const { value, checked } = e.target;
+      setSelectedOptions(prev =>
+        checked ? [...prev, value] : prev.filter(option => option !== value)
+      );
+    }
+
+    function boxtheme(){
       if(!searchShow){
         return(
           <div class="theme-container">
-          <div class="themebox" style={{ backgroundColor: "lightblue" }}>
-            <p>HORROR</p>
-          </div>
-          <div class="themebox" style={{ backgroundColor: "red" }}>
-            <p>ACTION</p>
-          </div>
-          <div class="themebox" style={{ backgroundColor: "yellow" }}>
-            <p>AVENTURE</p>
-          </div>
-          <div class="themebox" style={{ backgroundColor: "lightblue" }}>
-            <p>RPG</p>
-          </div>
-          <div class="themebox" style={{ backgroundColor: "red"}}>
-            <p>SANDBOX</p>
-          </div>
-          <div class="themebox" style={{ backgroundColor: "yellow" }}>
-            <p>FPS</p>
-          </div>
-          <div class="themebox" style={{ backgroundColor: "lightblue" }}>
-            <p>MOBA</p>
-          </div>
+          {themes.map((theme, index) => (
+            <div key={index} className="themebox">
+              <p>{theme}</p>
+            </div>))}
         </div>
         )
       }
@@ -101,20 +111,23 @@ export default function Search({datagame,dataprofil}) {
         <div class="result-container">
           <div class="filter-container">
             <h1>Filter</h1>
+            <h2>Genres</h2>
+            {themes.map((theme, index) => (
+              <div key={theme}>
+            <input 
+            type="checkbox"
+            name={theme}
+            value={theme}
+            checked={selectedOptions.includes(theme)}
+            onChange={handleCheckboxChange}/>
+            <label>{theme}</label>
+            </div>))}
+            
           </div>
           <div class="game-container">
-            <Searchlist person={filteredprofil} games={filteredgame}/>
+            <Searchlist person={dataprofil} games={filteredgame} />
           </div>
         </div>)
-      }
-    }
-
-    function handleSearch(){
-      if(value===""){
-        setSearchShow(false);
-      }
-      else {
-        setSearchShow(true);
       }
     }
 
@@ -139,13 +152,8 @@ export default function Search({datagame,dataprofil}) {
             
         </div>
 
-        <div>
-          {theme()}
-        </div>
-
-        <div>
+          {boxtheme()}
           {result()}
-        </div>      
     </div>
     )
 }
