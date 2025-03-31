@@ -24,7 +24,7 @@
 .infos{
     text-align: center;
     overflow: scroll;
-    flex-grow: 1;
+    width: 80%;
     background-color: #e5e5e5;
     border: solid calc(2px + 0.5vw) #000000;
     border-radius: calc(14px + 2vw);
@@ -33,7 +33,7 @@
 }
 
 .presentation {
-    font-size: calc(14px + 2vw);
+    font-size: calc(14px + 1.5vw);
     position: relative;
     display: flex;
     flex-direction: row;
@@ -41,9 +41,16 @@
     justify-content: left; /* Aligner à gauche */
 }
 
-.css-18k2bs-MuiAvatar-root{
-    width: calc(50px + 20vw);
-    height: calc(50px + 20vw);
+.avatar2{
+    margin: calc(14px + 10vw) calc(14px + 3vw) 0 calc(14px + 3vw);
+    display: flex;
+    flex-direction: column;
+    align-self: auto;
+    align-items: center;
+}
+
+.avatar2 p {
+    margin-bottom: 0;
 }
 
 
@@ -51,10 +58,11 @@
 
 
 
-
-
-
-
+@media screen and (min-width: 601px){
+    .avatar2{
+        display: none;
+    }
+}
 
 
 @media screen and (max-width: 600px){
@@ -63,11 +71,12 @@
         align-items: center;
     }
     .avatar{
-        align-self:auto;
+        display: none;
     }
     .infos{
+        flex-grow: 2;
         margin-right: 0;
         margin-top: calc(7px + 5vw);
+        margin-bottom: calc(7px + 5vw);
     }
-    
 }

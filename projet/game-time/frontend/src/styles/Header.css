@@ -1,6 +1,6 @@
 /* Header.css */
 .header {
-    font-size: calc(14px + 3vw);
+    font-size: calc(14px + 1.5vw);
     position: relative;
     padding: 0;
     background-color: #1a0339;
@@ -16,7 +16,7 @@
 
 /* Navigation dans l’en-tête */
 .header nav {
-    margin: 2vw;
+    margin: 1.5vw;
     display: flex;
     align-items: center;
     gap: 3vw;
@@ -27,7 +27,7 @@
 .logo{
     margin-left: 1vw;
     margin-bottom: 1vw;
-    font-size: calc(14px + 4vw);
+    font-size: calc(14px + 2.5vw);
 }
 
 /* Champ de recherche */
@@ -36,7 +36,7 @@
     margin: 0;
     border-radius: calc(4px + 0.5vw);
     border: none;
-    font-size: calc(14px + 2vw);
+    font-size: calc(14px + 1vw);
     width: 100%;
 }
 

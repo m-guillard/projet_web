@@ -1,5 +1,6 @@
 import "../styles/profile.css";
-import { Avatar, TextField} from '@mui/material';
+import {Avatar, IconButton} from '@mui/material';
+import SettingsIcon from '@mui/icons-material/Settings';
 import Header from "./Header";
 
 function Profile(){
@@ -7,13 +8,22 @@ function Profile(){
         <Header/>
         <div class="presentation">
             <div class="avatar">
-                <Avatar/>
+                <Avatar src="../logo.svg" sx={{width:"calc(14px + 20vw)",height:"calc(14px + 20vw)"}}/>
+                <p>
+                    avatar
+                </p>
+            </div>
+            <div class="avatar2">
+                <Avatar src="../logo.svg" sx={{width:"calc(30px + 40vw)",height:"calc(30px + 40vw)"}}/>
                 <p>
                     avatar
                 </p>
             </div>
             <div class="infos">
                 <h2 id="titreinfos">
+                    <IconButton sx={{position:"relative"}}>
+                        <SettingsIcon fontSize="large"/>
+                    </IconButton>
                     Informations:
                 </h2>
                 <p class="name">
