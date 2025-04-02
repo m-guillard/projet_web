@@ -1,10 +1,11 @@
 import React from 'react';
 import "../styles/search.css";
 import { useState,useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Cardgame({game}){
+  const navigate = useNavigate(); 
   return(
    
     <button class="boxgame" onClick={() => navigate("/Jeux")}>
@@ -18,6 +19,7 @@ function Cardgame({game}){
 }
 
 function Cardprofil({profil}){
+  const navigate = useNavigate(); 
   return(
   <button class="boxgame" onClick={() => navigate("/profile")}>
       <div>
@@ -80,7 +82,7 @@ export default function Search({datagame,dataprofil}) {
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
-            navigate("/profile");
+            
         } else {
             alert("Echec");
         }
@@ -90,7 +92,7 @@ export default function Search({datagame,dataprofil}) {
       e.preventDefault();
 
       const rep = await fetch('http://localhost:5000/search', {
-          method: "POST",
+          method: "GET",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({"page":'game',value}),
       });
@@ -98,7 +100,7 @@ export default function Search({datagame,dataprofil}) {
       console.log("Reponse du serveur :", data);
 
       if(rep.ok) {
-          navigate("/profile");
+          
       } else {
           alert("Echec");
       }
