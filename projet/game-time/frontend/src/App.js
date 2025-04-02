@@ -4,6 +4,7 @@ import Login from './pages/Login';  // Page Login (si elle existe)
 import Profile from './pages/Profile';
 import Jeux from './pages/Jeux';  // Page Jeux
 import Search from './pages/search';
+import Intro from './pages/Intro.js';
 import initialDetail from './datatest';
 import initialDetails from './datatest';
 import './App.css';
@@ -17,7 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />  {/* Route pour la page Login */}
           <Route path="/profile" element={<Profile />}/> {/*Route pour la page de profile*/}
           <Route path="/Jeux" element={<Jeux />} />  Route pour la page Login
-          <Route path="//intro" element={<Intro />}/> {/*Route pour la page de profile*/}
+          <Route path="/Intro" element={<Intro />}/> {/*Route pour la page de profile*/}
           <Route path="/Search" element={<Search datagame={initialDetail.Game} dataprofil={initialDetails.Profil}/>} />  {/*Route pour la page Search*/}
         </Routes>
       </div>
