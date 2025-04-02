@@ -2,8 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  // I
 import Accueil from './pages/Accueil';  // Page Accueil
 import Login from './pages/Login';  // Page Login (si elle existe)
 import Profile from './pages/Profile';
-import Intro from './pages/Intro';
 import Jeux from './pages/Jeux';  // Page Jeux
+import Search from './pages/search';
+import initialDetail from './datatest';
+import initialDetails from './datatest';
 import './App.css';
 
 function App() {
@@ -14,8 +16,8 @@ function App() {
           <Route path="/" element={<Accueil />} />  {/* Route pour la page d'accueil */}
           <Route path="/login" element={<Login />} />  {/* Route pour la page Login */}
           <Route path="/profile" element={<Profile />}/> {/*Route pour la page de profile*/}
-          <Route path="/Jeux" element={<Jeux />} />  Route pour la page Login
-          <Route path="//intro" element={<Intro />}/> {/*Route pour la page de profile*/}
+          <Route path="/Jeux" element={<Jeux />} />  {/*Route pour la page Jeux*/}
+          <Route path="/Search" element={<Search datagame={initialDetail.Game} dataprofil={initialDetails.Profil}/>} />  {/*Route pour la page Search*/}
         </Routes>
       </div>
     </Router>

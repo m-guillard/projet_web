@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 // Import de toutes les routes
 const loginRoutes = require("./routes/login.js");
+const searchRoutes = require("./routes/search.js");
 
 const PORT = 5000;
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // Utilisation des routes (qui doivent être importées au préalable)
 app.use('/login', loginRoutes);
+app.use('/search', searchRoutes);
 
 // Connexion aux bases de données
 main().catch((err) => console.log(err));
