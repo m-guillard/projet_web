@@ -4,8 +4,6 @@ import Header from "./Header";  // Importation du bandeau Header du haut
 import Card_Game from "./Cardgame";
 
 const App = () => {
-  
-  
   return (
     <div className="container">
       <Header />
@@ -36,7 +34,9 @@ const App = () => {
       </section>
 
       <footer className="footer">
-        Saluuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuut
+        <p>
+          saluuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuut
+        </p>
       </footer>
     </div>
   );

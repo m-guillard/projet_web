@@ -1,7 +1,6 @@
 import "../styles/Cardgame.css"
 import { Card, CardMedia, Fab, Typography } from "@mui/material";
 import { useState } from "react";
-import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 
 
@@ -36,7 +35,7 @@ const Card_Game = (type) => {
     const Arrow = ({direction, handleClick}) => {
         return(
         <Fab style={{alignSelf:"center",background:"transparent",width:"calc(20px + 5vw)",height:"calc(20px + 5vw)",minHeight:"0"}} onClick={handleClick}>
-            {direction === "left" ? <ArrowBackIos style={{fontSize:"calc(5px + 4vw)"}}/> : <ArrowForwardIos style={{fontSize:"calc(5px + 4vw)"}}/>}
+            {direction === "left" ? <ArrowForwardIos sx={{fontSize:"calc(5px + 4vw)",transform:"rotate(180deg)"}}/> : <ArrowForwardIos style={{fontSize:"calc(5px + 4vw)"}}/>}
         </Fab>
         )
     }
@@ -55,15 +54,15 @@ const Card_Game = (type) => {
     return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
-                <Card className="game-card" onClick={() => CardClick(contents[index])} >
+                <Card className="game-card" onClick={() => CardClick(contents[index])} sx={{borderRadius:"2vw"}} >
                     <CardMedia component="img" src={contents[index].imgsrc} />
                     <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{contents[index].title}</Typography>
                 </Card>
-                <Card className="game-card midcard" onClick={() => CardClick(contents[(index+1)%nmb_len_total_cards])}>
+                <Card className="game-card midcard" onClick={() => CardClick(contents[(index+1)%nmb_len_total_cards])} sx={{borderRadius:"2vw"}}>
                     <CardMedia component="img" src={contents[(index+1)%nmb_len_total_cards].imgsrc} />
                     <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{contents[(index+1)%nmb_len_total_cards].title}</Typography>
                 </Card>
-                <Card className="game-card lastcard" onClick={() => CardClick(contents[(index+2)%nmb_len_total_cards])}>
+                <Card className="game-card lastcard" onClick={() => CardClick(contents[(index+2)%nmb_len_total_cards])} sx={{borderRadius:"2vw"}}>
                     <CardMedia component="img" src={contents[(index+2)%nmb_len_total_cards].imgsrc} />
                     <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{contents[(index+2)%nmb_len_total_cards].title}</Typography>
                 </Card>

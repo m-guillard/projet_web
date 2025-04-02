@@ -26,14 +26,8 @@ body {
 
 /* Conteneur principal qui centre le contenu */
 .container {
-  margin: 0;
-  margin-left: 0vw;
-  width: 100%;
   text-align: center;
-  padding: 0;
 }
-
-
 
 /*  Section principale (bannière)  */
 .hero {
@@ -88,9 +82,17 @@ body {
 
 /*  Pied de page  */
 .footer {
+  position: relative;
+  width: 100vw;
   background-color: #1a0339;
   color: white;
-  padding: 1vw;
   margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer */
   font-size: calc(7px + 1.5vw);
+  padding-top: 0.1px;
+  padding-bottom: 0.1px;
+}
+
+.footer p {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
 }

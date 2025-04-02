@@ -1,6 +1,6 @@
 #fenetre{
-    background-color: #AED2FF;
     display: flex;
+    text-align: center;
     width: 100vw;
     align-items: stretch; /* Aligner en haut */
     justify-content: start; /* Aligner à gauche */
@@ -22,8 +22,8 @@
 }
 
 .infos{
-    text-align: center;
-    overflow: scroll;
+    position: relative;
+    overflow: hidden;
     width: 80%;
     background-color: #e5e5e5;
     border: solid calc(2px + 0.5vw) #000000;
@@ -33,6 +33,8 @@
 }
 
 .presentation {
+    padding-bottom: 3vw;
+    background-color: #AED2FF;
     font-size: calc(14px + 1.5vw);
     position: relative;
     display: flex;
