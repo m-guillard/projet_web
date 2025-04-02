@@ -102,10 +102,26 @@ Voici sa tronche approximative :
     const db1_db = require('../database/modeleDB1')
     
     router.use(express.json());
+
+    // Fonction pour écrire dans la base de données
+    const createElt = async(v1, v2) => {
+      try {
+        const db1 = new db1_db({
+          champ1: v1,
+          champ2: v2
+        });
+
+        await db1.save();
+      } catch (error) {
+        console.error('Erreur lors de la création du user :', error);
+      }
+    };
     
     // Il existe pleins de mots clés, on a router.post, router.get...
     router.post('/', async (req, res) => {
         // Toute votre logique
+        // Appel à une fonction d'écriture
+        createElt(valeur1, valeur2);
     })
     module.exports = router;
 ## modeleDB.js

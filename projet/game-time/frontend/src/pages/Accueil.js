@@ -28,25 +28,11 @@ const App = () => {
 
       <section className="games-section">
         <h2>🎮 Jeux les mieux notés</h2>
-        <Card_Game/>
-        {/* <div className="games-grid">
-          <div className="game-card"></div>
-          <div className="game-card"></div>
-          <div className="game-card"></div>
-        </div> */}
+        <Card_Game type={"note"}/>
         <h2>✨ À découvrir</h2>
-        <div className="games-grid">
-          <div className="game-card"></div>
-          <div className="game-card"></div>
-          <div className="game-card"></div>
-        </div>
-
+        <Card_Game type={"découverte"}/>
         <h2>🔥 Jeux tendance</h2>
-        <div className="games-grid">
-          <div className="game-card"></div>
-          <div className="game-card"></div>
-          <div className="game-card"></div>
-        </div>
+        <Card_Game type={"tendances"}/>
       </section>
 
       <footer className="footer">

@@ -9,8 +9,29 @@
 
 /*  Carte individuelle pour un jeu  */
 .game-card {
+    display: flex;
+    position: relative;
+    flex-direction: row;
     width: calc(70px + 10vw);
-    height: max-content;
     background-color: lightgray;
-    border-radius: 1vw; /* Coins arrondis */
+    border-radius: 2vw; /* Coins arrondis */
+}
+
+
+@media screen and (max-width:600px){
+    .lastcard{
+        display: none;
+    }
+    .game-card{
+        width: calc(70px + 15vw);
+    }
+}
+
+@media screen and (max-width:350px){
+    .midcard{
+        display: none;
+    }
+    .game-card{
+        width: calc(70px + 20vw);
+    }
 }

@@ -1,27 +1,31 @@
 import React from 'react';
 import "../styles/search.css";
 import { useState,useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Cardgame({game}){
   return(
-    <div class="boxgame">
+   
+    <button class="boxgame" onClick={() => navigate("/Jeux")}>
       <div>
         <h2>{game.name}</h2>
         <p>{game.genre}</p>
       </div>
-    </div>
+    </button>
+
   );
 }
 
 function Cardprofil({profil}){
   return(
-  <div class="boxgame">
+  <button class="boxgame" onClick={() => navigate("/profile")}>
       <div>
         <h2>{profil.name}</h2>
         <p>{profil.email}</p>
       </div>
-    </div>);
+    </button>
+   );
 }
 
 function Searchgame({ games = [] }){
@@ -44,13 +48,7 @@ function Searchprofil({ person = [] }){
   )
 }
 
-const Scroll = (props) => {
-  return( 
-    <div class="scroll-menu">
-      {props.children}
-    </div>	
-  );
-}
+
 
 export default function Search({datagame,dataprofil}) {
     const [value, setValue] = useState("");
@@ -58,7 +56,7 @@ export default function Search({datagame,dataprofil}) {
     const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedType, setselectedType] = useState([]);
-
+    const navigate = useNavigate();
     const [filteredgame,setFilteredGames] =useState( datagame.filter((item) =>item.name.toLowerCase().includes(value.toLowerCase()) ))
     const filteredprofil = dataprofil.filter((item) =>item.name.toLowerCase().includes(value.toLowerCase()));
     
@@ -70,15 +68,41 @@ export default function Search({datagame,dataprofil}) {
       setFilteredGames(filtered);
     }, [value, selectedOptions, datagame]);
 
-    /*function search(){
-      if (searchShow){
-        return(<Scroll>
-          <Searchlist person={filteredprofil} games={filteredgame}/>
-        </Scroll>);
-      }
-      return null;
-    }*/
+    const handleSubmitsearchprofile = async (e) => {
+        e.preventDefault();
 
+        const rep = await fetch('http://localhost:5000/search', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({"page":'profile',value}),
+        });
+        const data = await rep.json();
+        console.log("Reponse du serveur :", data);
+
+        if(rep.ok) {
+            navigate("/profile");
+        } else {
+            alert("Echec");
+        }
+    };
+
+  const handleSubmitsearchgame = async (e) => {
+      e.preventDefault();
+
+      const rep = await fetch('http://localhost:5000/search', {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({"page":'game',value}),
+      });
+      const data = await rep.json();
+      console.log("Reponse du serveur :", data);
+
+      if(rep.ok) {
+          navigate("/profile");
+      } else {
+          alert("Echec");
+      }
+  };
 
     function handleSearch(){
       if(value===""){
@@ -204,4 +228,22 @@ export default function Search({datagame,dataprofil}) {
 
 /*<div>
     {search()}
-  </div>*/
+  </div>
+
+  const Scroll = (props) => {
+  return( 
+    <div class="scroll-menu">
+      {props.children}
+    </div>	
+  );
+}
+
+function search(){
+      if (searchShow){
+        return(<Scroll>
+          <Searchlist person={filteredprofil} games={filteredgame}/>
+        </Scroll>);
+      }
+      return null;
+    }
+  */
