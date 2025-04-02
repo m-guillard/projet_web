@@ -13,9 +13,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Accueil />} />  {/* Route pour la page d'accueil */}
           <Route path="/login" element={<Login />} />  {/* Route pour la page Login */}
-          <Route path="/profile" element={<Profile />}/> {/*Route pour la page de profile*/}
-          <Route path="/Jeux" element={<Jeux />} />  Route pour la page Login
-          <Route path="//intro" element={<Intro />}/> {/*Route pour la page de profile*/}
+          <Route path="/profile" element={<Profile />}/> {/*Route pour la page de profil*/}
+          <Route path="/Jeux" element={<Jeux />} /> {/*Route pour la page de jeux*/}
+          <Route path="//intro" element={<Intro />}/> {/*Route pour la page de profil*/}
         </Routes>
       </div>
     </Router>
