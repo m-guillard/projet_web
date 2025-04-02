@@ -5,15 +5,38 @@ import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 
 
-const Card_Game = () => {
+const Card_Game = (type) => {
     const [index, setIndex] = useState(0);
-    const contents = ["yo1","yo2","yo3","yo4","yo5","yo6","yo7","yo8","yo9","yo10"]
+
+    //faire demande de contents en backend dépendant du type qu'on veut:
+    const contents = [
+        {title:"yo1akihfdajhe",
+        imgsrc:"https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"},
+        {title:"yo2",
+        imgsrc:"https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80"},
+        {title:"yo3",
+        imgsrc:"https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80"},
+        {title:"destiny",
+        imgsrc:"https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80"},
+        {title:"yo5",
+        imgsrc:null},
+        {title:"yo6",
+        imgsrc:null},
+        {title:"yo7",
+        imgsrc:null},
+        {title:"yo8",
+        imgsrc:null},
+        {title:"yo9",
+        imgsrc:null},
+        {title:"yo10",
+        imgsrc:null}
+    ];
     const nmb_len_total_cards = contents.length;
 
     const Arrow = ({direction, handleClick}) => {
         return(
-        <Fab style={{alignSelf:"center",background:"transparent"}} onClick={handleClick}>
-            {direction === "left" ? <ArrowBackIos fontSize="10vw"/> : <ArrowForwardIos fontSize="10vw"/>}
+        <Fab style={{alignSelf:"center",background:"transparent",width:"calc(20px + 5vw)",height:"calc(20px + 5vw)",minHeight:"0"}} onClick={handleClick}>
+            {direction === "left" ? <ArrowBackIos style={{fontSize:"calc(5px + 4vw)"}}/> : <ArrowForwardIos style={{fontSize:"calc(5px + 4vw)"}}/>}
         </Fab>
         )
     }
@@ -23,23 +46,26 @@ const Card_Game = () => {
         const newIndex = (index + increment + nmb_len_total_cards) % nmb_len_total_cards;
         setIndex(newIndex);
     }
+
+    const CardClick = (content) =>{
+        const {imgsrc, title} = content;
+        console.log(title);
+    }
     
     return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
-                <Card sx={{width:"10vw",height:"10vw"}}>
-                    <CardMedia src="">
-                        <Typography>{contents[index]}</Typography>
-                    </CardMedia>
+                <Card className="game-card" onClick={() => CardClick(contents[index])} >
+                    <CardMedia component="img" src={contents[index].imgsrc} />
+                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{contents[index].title}</Typography>
                 </Card>
-                <Card sx={{width:"10vw",height:"10vw"}}>
-                    <CardMedia src="">
-                        <Typography>{contents[(index+1)%nmb_len_total_cards]}</Typography>
-                    </CardMedia>
+                <Card className="game-card midcard" onClick={() => CardClick(contents[(index+1)%nmb_len_total_cards])}>
+                    <CardMedia component="img" src={contents[(index+1)%nmb_len_total_cards].imgsrc} />
+                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{contents[(index+1)%nmb_len_total_cards].title}</Typography>
                 </Card>
-                <Card className="game-card">
-                    <CardMedia component="img" src={"https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"} />
-                    <Typography sx={{position:"relative", top:"-5vw", color:"#ffffff"}}>{contents[(index+2)%nmb_len_total_cards]}</Typography>
+                <Card className="game-card lastcard" onClick={() => CardClick(contents[(index+2)%nmb_len_total_cards])}>
+                    <CardMedia component="img" src={contents[(index+2)%nmb_len_total_cards].imgsrc} />
+                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{contents[(index+2)%nmb_len_total_cards].title}</Typography>
                 </Card>
             <Arrow direction={"right"} handleClick={() => ArrowClick("right")}/>
         </div>
