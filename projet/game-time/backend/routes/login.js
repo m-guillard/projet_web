@@ -16,8 +16,9 @@ const createUser = async(username, mail, bday, pswd) => {
 
         await user.save();
     } catch (error) {
-        console.error('Erreur lors de la création du user :', error);
+        return false;
     }
+    return true;
 };
 
 
@@ -28,43 +29,65 @@ router.post('/', async (req, res) => {
     if(data["page"] == "inscription"){
 
         // On vérifier que userName n'est pas déjà dans la base
-        var utilisateurs = await users_db.find({username: data["username"]});
+        var utilisateurs = await users_db.findOne({username: data["usernameInsc"]});
         // Regex pour verif entrée utilisateur
         const mailRegex = new RegExp("^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$");
         // Vérification dates
         const date = new Date(data["birthday"]);
         const date_jour = Date.now()
+        //Regex pour vérifier que le mot de passe respecte les exigences
+        const pswdRegex = new RegExp("(?=.*[A-Z])(?=.*[0-9])(?=.*[^\sa-zA-Z0-9]).{8,50}");
 
-        if (utilisateurs.length){
-            console.log("Il y a déjà un utilisateeeeeeur");
+        if (data.usernameInsc=='' || data.mail=='' || data.birthday=='' || data.passwordInsc=='' || data.verifPassword=='') {
+            return res.status(401).json({message: "Tous les champs n'ont pas été remplis"});
         }
-        else if(!mailRegex.test(data["mail"])){
-            console.log("Erreur adresse mail");
+        else if (utilisateurs){
+            return res.status(409).json({message: "Nom d'utilisateur déjà pris"});
+        }
+        else if(!mailRegex.test(data.mail)){
+            return res.status(401).json({message: "Format d'adresse mail incorrect"});
         }else if(isNaN(date)){
-          console.log("Cette date n'existe pas");
+            return res.status(401).json({message: "Format de date incorrecte/Date inexistante"});
         }else if(date>date_jour){
-            console.log("Tu n'es pas né.e");
+            return res.status(401).json({message: "Date de naissance supérieure à la date du jour"});
         }else if(date.getFullYear()<1900){
-            console.log("Tu es mort.e");
-        }else if(data["passwordInsc"]!==data["verifPassword"]){
-            console.log("Mot de passe différent de la confirmation");
+            return res.status(401).json({message: "Impossible de rentrer une année inférieure à 1900"});
+        }else if(!pswdRegex.test(data.passwordInsc)){
+            return res.status(401).json({message: "Le mot de passe ne respecte les conditions"});
+        }else if(data.passwordInsc!==data.verifPassword){
+            return res.status(401).json({message: "Mot de passe et confirmation du mot de passe différents"});
         }else{
             // On hash le mot de passe
-            pswd_hash = await bcrypt.hash(data["passwordInsc"], 10);
+            const pswd_hash = await bcrypt.hash(data.passwordInsc, 10);
             // Tout est validé, on enregistre dans la base de données
-            createUser(data["usernameInsc"], data["mail"], data["birthday"], pswd_hash);
+            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash);
+            
+            if (newUser){
+                return res.status(201).json({message: "Inscription réussie"});
+            }else{
+                return res.status(500).json({message: "Erreur serveur lors de l'inscription"});
+            }
         }
 
 
     }
-    else if(data["page"] == "connexion"){
+    else if(data.page == "connexion"){
         // On vérifie qu'il existe le couple username/password
+        var utilisateur = await users_db.findOne({username: data["usernameConn"]});
+        if (!utilisateur) {
+            return res.status(401).json({message: "Utilisateur inconnu"});
+        } else if (data.passwordConn){
+            const isMatch = await bcrypt.compare(data.passwordConn, utilisateur.password);
+            if (!isMatch){
+                return res.status(401).json({message: "Mot de passe incorrect"});
+            } else {
+                return res.status(201).json({message: "Connexion réussie"});
+            }
+        }
     }
     else if(data["page"] == "oubli"){
         // On envoie un mail pour changer de mot de passe
     }
-
-    res.status(200).json({message:'Login success'});
 
 })
 module.exports = router;
