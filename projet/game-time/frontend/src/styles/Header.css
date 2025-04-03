@@ -39,8 +39,3 @@
     font-size: calc(14px + 1vw);
     width: 100%;
 }
-
-/* Ajouter un espace en haut de la section qui suit le header */
-.container {
-    width: 100%;
-}

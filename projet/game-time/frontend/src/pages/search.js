@@ -23,8 +23,8 @@ function Cardprofil({profil}){
   return(
   <button class="boxgame" onClick={() => navigate("/profile")}>
       <div>
-        <h2>{profil.name}</h2>
-        <p>{profil.email}</p>
+        <h2>{profil.username}</h2>
+        <p>{profil.mail}</p>
       </div>
     </button>
    );
@@ -58,12 +58,11 @@ export default function Search({datagame,dataprofil}) {
     const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedType, setselectedType] = useState([]);
-    const navigate = useNavigate();
-    const [filteredgame,setFilteredGames] =useState( datagame.filter((item) =>item.name.toLowerCase().includes(value.toLowerCase()) ))
-    const filteredprofil = dataprofil.filter((item) =>item.name.toLowerCase().includes(value.toLowerCase()));
+    const [filteredgame,setFilteredGames] =useState([]);
+    const [filteredprofil,setFilteredProfil] = useState( []);
     
     useEffect(() => {
-      let filtered = datagame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+      let filtered = filteredgame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
       if (selectedOptions.length > 0) {
         filtered = filtered.filter(item => selectedOptions.includes(item.genre));
       }
@@ -71,7 +70,7 @@ export default function Search({datagame,dataprofil}) {
     }, [value, selectedOptions, datagame]);
 
     const handleSubmitsearchprofile = async (e) => {
-        e.preventDefault();
+        //e.preventDefault();
 
         const rep = await fetch('http://localhost:5000/search', {
             method: "POST",
@@ -82,17 +81,17 @@ export default function Search({datagame,dataprofil}) {
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
-            
+            setFilteredProfil(data)
         } else {
             alert("Echec");
         }
     };
 
   const handleSubmitsearchgame = async (e) => {
-      e.preventDefault();
+      //e.preventDefault();
 
       const rep = await fetch('http://localhost:5000/search', {
-          method: "GET",
+          method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({"page":'game',value}),
       });
@@ -100,11 +99,11 @@ export default function Search({datagame,dataprofil}) {
       console.log("Reponse du serveur :", data);
 
       if(rep.ok) {
-          
+          setFilteredGames(data)
       } else {
           alert("Echec");
       }
-  };
+    };
 
     function handleSearch(){
       if(value===""){
@@ -112,6 +111,8 @@ export default function Search({datagame,dataprofil}) {
       }
       else {
         setSearchShow(true);
+        handleSubmitsearchprofile();
+        handleSubmitsearchgame();
       }
     }
 

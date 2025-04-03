@@ -2,6 +2,8 @@ import "../styles/profile.css";
 import {Avatar, IconButton} from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Header from "./Header";
+import Card_Game from "./Cardgame";
+
 
 function Profile(){
     return(<div id="fenetre">
@@ -21,9 +23,6 @@ function Profile(){
             </div>
             <div class="infos">
                 <h2 id="titreinfos">
-                    <IconButton sx={{position:"relative"}}>
-                        <SettingsIcon fontSize="large"/>
-                    </IconButton>
                     Informations:
                 </h2>
                 <p class="name">
@@ -35,8 +34,19 @@ function Profile(){
                 <p class="email">
                     robinjenny73@gmail.com
                 </p>
+                <IconButton sx={{position:"absolute", top:"0", right:"0"}}>
+                    <SettingsIcon fontSize="large"/>
+                </IconButton>
             </div>
         </div>
+        <section className="games-section">
+            <h2>🎮 Jeux préférés</h2>
+            <Card_Game type={"note"}/>
+            <h2>✨ Jeux pour toi</h2>
+            <Card_Game type={"découverte"}/>
+            <h2>🔥 Jeux récemments joués</h2>
+            <Card_Game type={"tendances"}/>
+        </section>
     </div>)
 }
 
