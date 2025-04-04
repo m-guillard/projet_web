@@ -8,7 +8,7 @@ const Header = () => {
       <div className="logo">🎮</div>
       <nav>
         <Link to="/">Home</Link>
-        <input type="text" placeholder="Recherche..." className="search" />
+        <input type="search" placeholder="Recherche..." className="search" />
         <a href="/Profile" className="profile">Profil</a>
       </nav>
     </header>
