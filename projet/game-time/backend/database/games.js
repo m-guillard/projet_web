@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
     name: String,
     genre : String,
-    rating : Int16Array
+    rating : Number
 });
 
 const Game = mongoose.model("Game", userSchema);
