@@ -4,11 +4,7 @@ import Login from './pages/Login';  // Page Login (si elle existe)
 import Profile from './pages/Profile';
 import Jeux from './pages/Jeux';  // Page Jeux
 import Search from './pages/search';
-<<<<<<< HEAD
 import Intro from './pages/Intro'
-=======
-import Intro from './pages/Intro.js';
->>>>>>> f7acd27f5fb7c953eef9d5fef265e2915dd31e38
 import initialDetail from './datatest';
 import initialDetails from './datatest';
 import './App.css';
