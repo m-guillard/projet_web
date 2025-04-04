@@ -15,6 +15,14 @@
     margin: 3vw;
 }
 
+.erreur {
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 1vw;
+    margin-top: 0.5vw;
+}
+
 .formulaire {
     display: flex;
     flex-direction: column;
@@ -71,6 +79,10 @@ input[type="submit"]:hover {
 }
 
 .oubli a {
+    font-size: 10px; /* Réduit la taille du texte */
+}
+
+.precision {
     font-size: 10px; /* Réduit la taille du texte */
 }
 
