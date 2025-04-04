@@ -20,10 +20,6 @@ body {
   padding: 0vw;
 }
 
-#root{
-  width: 100vw;
-}
-
 /* Conteneur principal qui centre le contenu */
 .container {
   text-align: center;
@@ -75,16 +71,10 @@ body {
   font-size: calc(14px + 0.7vw);
 }
 
-/*  Section contenant les jeux  */
-.games-section {
-  margin: 10;
-}
-
 /*  Pied de page  */
 .footer {
   position: relative;
-  width: 100vw;
-  background-color: #1a0339;
+  background-color: #60B5FF;
   color: white;
   margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer */
   font-size: calc(7px + 1.5vw);

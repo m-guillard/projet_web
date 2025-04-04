@@ -26,4 +26,14 @@ function App() {
   );
 }
 
+let search = document.querySelector(".search");
+
+if (search != null) {
+  search.addEventListener("keydown", function(event) {
+    if (event.keyCode == '13') {
+      window.location = "/Search";
+    }
+  });
+}
+
 export default App;

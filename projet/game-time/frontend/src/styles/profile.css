@@ -1,7 +1,6 @@
 #fenetre{
     display: flex;
     text-align: center;
-    width: 100vw;
     align-items: stretch; /* Aligner en haut */
     justify-content: start; /* Aligner à gauche */
     flex-direction: column;
@@ -14,7 +13,7 @@
 }
 
 .avatar{
-    margin: calc(14px + 10vw) calc(14px + 3vw) calc(14px + 2vw) calc(14px + 3vw);
+    margin: calc(14px + 10vw) calc(14px + 3vw) 0 calc(14px + 3vw);
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -25,6 +24,7 @@
     position: relative;
     overflow: hidden;
     width: 80%;
+    line-height: 0.4;
     background-color: #e5e5e5;
     border: solid calc(2px + 0.5vw) #000000;
     border-radius: calc(14px + 2vw);

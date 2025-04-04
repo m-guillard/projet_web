@@ -1,8 +1,12 @@
 import "../styles/profile.css";
+import Cookies from 'js-cookie';
 import {Avatar, IconButton} from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Link } from 'react-router-dom';  // Importation de Link pour la navigation
 import Header from "./Header";
 import Card_Game from "./Cardgame";
+
+Cookies.remove('gameProfile');
 
 
 function Profile(){
@@ -34,9 +38,12 @@ function Profile(){
                 <p class="email">
                     robinjenny73@gmail.com
                 </p>
-                <IconButton sx={{position:"absolute", top:"0", right:"0"}}>
+                {/* <IconButton sx={{position:"absolute", top:"0", right:"0"}}>
                     <SettingsIcon fontSize="large"/>
-                </IconButton>
+                </IconButton> */}
+                <Link to="/">
+                    <button className="btn">DECONNEXION</button>
+                </Link>
             </div>
         </div>
         <section className="games-section">
