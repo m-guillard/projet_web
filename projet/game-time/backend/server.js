@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 // Import de toutes les routes
 const loginRoutes = require("./routes/login.js");
 const searchRoutes = require("./routes/search.js");
+const introRoutes = require("./routes/intro.js");
 
 const PORT = 5000;
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 // Utilisation des routes (qui doivent être importées au préalable)
 app.use('/login', loginRoutes);
 app.use('/search', searchRoutes);
+app.use('/intro', introRoutes);
 
 // Connexion aux bases de données
 main().catch((err) => console.log(err));
@@ -48,6 +50,7 @@ app.post("/save-result", (req, res) => {
 app.get('/', (req, res) => {
   res.send('Hello from Express!');
 });
+
 app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-  });
+  console.log(`Server listening on port ${PORT}`);
+});
