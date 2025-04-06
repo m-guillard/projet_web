@@ -10,6 +10,10 @@ Cookies.remove('gameProfile');
 
 
 function Profile(){
+    const handleDeconnexion = async (e) => {
+        Cookies.remove('authTrueGameTime');
+        
+    }
     return(<div id="fenetre">
         <Header/>
         <div class="presentation">
@@ -42,7 +46,7 @@ function Profile(){
                     <SettingsIcon fontSize="large"/>
                 </IconButton> */}
                 <Link to="/">
-                    <button className="btn">DECONNEXION</button>
+                    <button className="btn" onClick={handleDeconnexion}>DECONNEXION</button>
                 </Link>
             </div>
         </div>
