@@ -63,6 +63,8 @@ router.post('/', async (req, res) => {
             const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash);
             
             if (newUser){
+                utilisateur = await users_db.findOne({username: data.usernameInsc});
+                res.cookie('authTrueGameTime', utilisateur._id, {maxAge: 31*24*60*60*1000});
                 return res.status(201).json({message: "Inscription réussie"});
             }else{
                 return res.status(500).json({message: "Erreur serveur lors de l'inscription"});
@@ -81,6 +83,8 @@ router.post('/', async (req, res) => {
             if (!isMatch){
                 return res.status(401).json({message: "Mot de passe incorrect"});
             } else {
+                utilisateur = await users_db.findOne({username: data.usernameInsc});
+                res.cookie('authTrueGameTime', utilisateur._id, {maxAge: 31*24*60*60*1000});
                 return res.status(201).json({message: "Connexion réussie"});
             }
         }

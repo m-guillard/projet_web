@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  // Import des éléments nécessaires
 import Accueil from './pages/Accueil';  // Page Accueil
-import Login from './pages/Login';  // Page Login (si elle existe)
+import Login from './pages/Login';  // Page Login
 import Profile from './pages/Profile';
 import Jeux from './pages/Jeux';  // Page Jeux
 import Search from './pages/search';
+import Intro from './pages/Intro'
 import initialDetail from './datatest';
 import initialDetails from './datatest';
-import Intro from './pages/Intro';
 import './App.css';
 
 function App() {
@@ -24,6 +24,16 @@ function App() {
       </div>
     </Router>
   );
+}
+
+let search = document.querySelector(".search");
+
+if (search != null) {
+  search.addEventListener("keydown", function(event) {
+    if (event.keyCode == '13') {
+      window.location = "/Search";
+    }
+  });
 }
 
 export default App;
