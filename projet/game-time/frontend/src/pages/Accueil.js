@@ -19,9 +19,16 @@ const App = () => {
           <li>bla bla bla bla bla bla bla</li>
         </ul>
 
-        <Link to="/intro">
+        
+        <div className="character-container">
+          <Link to="/intro">
           <img src="/Nino_t.png" alt="Logo" className="character_accueil" />
-        </Link>
+          <div className="bubble">Clique-moi dessus pour générer tes statistiques de profil ! Ça permettra de te créer un profil, ou si tu l'as déjà fait, de te suggérer des jeux de manière personnalisée.</div>
+          </Link>        
+        </div>
+        
+
+      
       </section>
 
       <section className="games-section">
