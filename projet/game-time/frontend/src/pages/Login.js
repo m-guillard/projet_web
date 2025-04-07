@@ -2,6 +2,7 @@ import "../styles/login.css";
 import { useState } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Champ({nom, valeur, onChange, type_champ="text", mdp=""}){
     return (
@@ -65,6 +66,9 @@ function Login(){
             body: JSON.stringify({"page":'connexion',usernameConn, passwordConn}),
         });
         const data = await rep.json();
+        console.log(data);
+        Cookies.set("authTrueGameTime", data.id, {expires: 30});
+        console.log(Cookies.get("authTrueGameTime"));
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
