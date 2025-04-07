@@ -90,3 +90,38 @@ input[type="submit"]:hover {
     text-decoration: underline; /* Effet au survol */
     text-decoration: none; /* Enlève le soulignement */
 }
+
+/* Styles pour la sélection d'image */
+#selectionImage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2vw;
+}
+
+.photo-item {
+    text-align: center;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item input[type="radio"] {
+    display: block;
+    margin: 0.5vw auto;
+    visibility: hidden;
+}
+
+.photo-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.photo-item input[type="radio"]:checked + img {
+    border-color: #9400FF; /* Bordure violette pour l'image sélectionnée */
+}
