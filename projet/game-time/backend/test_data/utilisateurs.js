@@ -16,8 +16,10 @@ async function generateUsers() {
             const mail = faker.internet.email();
             const birthday = faker.date.birthdate({ min: 1900, max: 2010, mode: 'year' });
             const password = await bcrypt.hash("password123", 10); // Mot de passe hashé
+            const numero = Math.floor(Math.random() * 4) + 1;
+            const avatar = `/img/profile/p${numero}.PNG`;
 
-            users.push({ username, mail, birthday, password });
+            users.push({ username, mail, birthday, password, avatar });
         }
 
         await users_db.insertMany(users);

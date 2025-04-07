@@ -63,7 +63,7 @@ router.post('/', async (req, res) => {
             // On enregistre le chemin
             const path = `/img/profile/p${data.avatar}.PNG`;
             // Tout est validé, on enregistre dans la base de données
-            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash);
+            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash, path);
             
             if (newUser){
                 utilisateur = await users_db.findOne({username: data.usernameInsc});
