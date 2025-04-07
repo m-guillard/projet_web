@@ -13,6 +13,8 @@ body {
     padding-bottom: 10px;
 }
 
+/*Searchbar*/
+
 .searchbar {
     position: relative;
     width: 100%;
@@ -52,9 +54,24 @@ body {
     margin-bottom: 0; 
 }
 
+
+
+
+
 .boxgame{
     font-size: 10px;
+    background-color: #E4F1FF;
+    width: 100%;
 }
+
+.boxgame:hover{
+    font-size: 10px;
+    background-color: #E4F1FF;
+    width: 100%;
+}
+
+
+
 
 .theme-container{
     display: flex;
@@ -65,16 +82,61 @@ body {
 }
 
 .themebox{
+    position: relative;
     display: flex;
-    font-size: 16px;
+    font-size: 20px;
     align-items: center;
     justify-content: center;
     border: 2px solid black;
+    border-radius: 20px;
     width: 250px;
     height: 150px;
     flex: 0 0 250px;
     margin: 10px;
+    background: #E4F1FF;
+    z-index: 0;
+    overflow: hidden;
+    transition: color 0.3s ease;
 }
+
+.themebox::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1;
+  }
+  .themebox.horror::before  {
+    background-color: rgba(244,3,3,1);
+  }
+  .themebox.action::before  {
+    background-color:  rgba(137,78,25,1);
+  }
+  .themebox.adventure::before  {
+    background-color:rgba(0,120,255,1);
+  }
+  
+  .themebox:hover::before,
+  .themebox:focus::before {
+    width: 300%;
+    height: 300%;
+  }
+  
+  .themebox:hover,
+  .themebox:focus {
+    color: white;
+  }
+
+
+
+
+
+
 
 .result-container{
     display:flex;

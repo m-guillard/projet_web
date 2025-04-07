@@ -2,9 +2,9 @@
 import { Link } from 'react-router-dom';
 import "../styles/Header.css";  // Importation du fichier CSS spécifique au header
 
-const Header = () => {
+const Header = ({genre}) => {
   return (
-    <header className="header">
+    <header className={`header ${genre}`}>
       <div className="logo">🎮</div>
       <nav>
         <Link to="/">Home</Link>
