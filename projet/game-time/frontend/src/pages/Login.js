@@ -68,7 +68,6 @@ function Login(){
         const data = await rep.json();
         console.log(data);
         Cookies.set("authTrueGameTime", data.id, {expires: 30});
-        console.log(Cookies.get("authTrueGameTime"));
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
@@ -94,7 +93,7 @@ function Login(){
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
-            console.log("All is good");
+            Cookies.set("authTrueGameTime", data.id, {expires: 30});
             navigate("/profile");
         } else {
             // const data = await rep.json;

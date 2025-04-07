@@ -3,7 +3,7 @@ import { useRef } from "react";
 import "../styles/Intro.css";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { Link } from 'react-router-dom';
-
+import Cookies from "js-cookie";
 
 export default function IntroPage({ onClose }) {
     const [finalResults, setFinalResults] = useState([]);
