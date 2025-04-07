@@ -9,10 +9,12 @@ const Header = ({genre}) => {
   return (
     <header className="header">
       <div className="logo">
+      <Link to="/">
         <img src="/Nini_qui_game.png" alt="Logo" />
+        </Link>
       </div>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/Profile">Home</Link>
         <input type="text" placeholder=" Recherche..." className="search" />
 
         {isAuthenticated ? (
