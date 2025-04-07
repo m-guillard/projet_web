@@ -12,6 +12,18 @@
     margin: calc(14px + 2vw);
 }
 
+.btndeconnexion{
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    padding: 1vw;
+    color: #dddddd;
+    background-color: #9400FF;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-size: calc(14px + 1.2vw);
+}
+
 .avatar{
     margin: calc(14px + 10vw) calc(14px + 3vw) 0 calc(14px + 3vw);
     display: flex;

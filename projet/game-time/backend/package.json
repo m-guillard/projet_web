@@ -16,7 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "mongoose": "^8.13.1",
-    "moongoose": "^0.0.5",
+    "moongoose": "^0.0.1",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
