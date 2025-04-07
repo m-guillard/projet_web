@@ -19,9 +19,7 @@ const App = () => {
           <li>bla bla bla bla bla bla bla</li>
         </ul>
 
-        <Link to="/intro">
-          <button className="btn">INSCRIPTION | CONNEXION</button>
-        </Link>
+        <img src="/Nino_t.png" alt="Logo" className="character_accueil" />
       </section>
 
       <section className="games-section">

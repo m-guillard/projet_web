@@ -62,18 +62,14 @@ body {
   /*display: inline-block;*/ /* Évite que la liste prenne toute la largeur */
 }
 
-/*  Bouton d'inscription/connexion  */
-.btn {
-  margin-top: 1vw;
-  margin-bottom: 1vw;
-  padding: 1vw;
-  color: #dddddd;
-  background-color: #9400FF;
-  border: none;
-  border-radius: 0.5vw;
-  cursor: pointer;
-  font-size: calc(14px + 0.7vw);
+.character_accueil {
+  font-size: 50px;
+  margin-bottom: 20px;
+  right: 10vw;
+  animation: bounce 1.5s infinite;
+  width: 25vw;
 }
+
 
 /*  Section contenant les jeux  */
 .games-section {

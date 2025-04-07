@@ -39,3 +39,16 @@
     font-size: calc(14px + 1vw);
     width: 100%;
 }
+
+/*  Bouton d'inscription/connexion  */
+.btn {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    padding: 1vw;
+    color: #dddddd;
+    background-color: #9400FF;
+    border: none;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    font-size: calc(10px + 0.vw);
+  }
