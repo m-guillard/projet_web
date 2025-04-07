@@ -7,13 +7,13 @@ router.use(express.json());
 
 router.post('/', async (req, res) => {
     const data = req.body;
-    console.log(data);
     var utilisateur = await users_db.findOne({_id: data["id"]});
 
     if (utilisateur) {
-        return res.status(201).json({'avatar':utilisateur.username,'datenaisssance':utilisateur.birthday, 'mail':utilisateur.mail});
+        const month = utilisateur.birthday.getMonth()+1;
+        return res.status(201).json({'avatar':utilisateur.username,'datenaissance':utilisateur.birthday.getDate().toString()+"/"+month+"/"+utilisateur.birthday.getFullYear().toString(),'mail':utilisateur.mail});
     }else{
-        return res.status(401).json('erreur serveur, utilisateur non trouvé')
+        return res.status(400).json('erreur serveur, utilisateur non trouvé');
     }
 });
 

@@ -6,9 +6,15 @@ import Header from "./Header";
 import Card_Game from "./Cardgame";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Profile() {
+    const navigate = useNavigate();
     const [finalResults, setFinalResults] = useState([]);
+    const [avatar, setAvatar] = useState('');
+    const [datenaissance, setDatenaissance] = useState('');
+    const [mail,setMail] = useState('');
 
     useEffect(() => {
         // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
@@ -26,28 +32,22 @@ function Profile() {
         }
     }, []);
 
-    const [avatar, setAvatar] = useState('');
-    const [nom, setNom] = useState('');
-    const [datenaissance, setDatenaissance] = useState('');
-    const [mail,setMail] = useState('');
-
     const handleDeconnexion = async (e) => {
         Cookies.remove('authTrueGameTime');
+        navigate('/Login');
     };
 
     const getinfo = async () => {
-        console.log(document.cookie);
-        const data = Cookies.get();
-        // console.log(data);
+        console.log(document.cookie.toString());
+        const data = Cookies.get('authTrueGameTime');
         const rep = await fetch('http://localhost:5000/fetchProfile', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"id":data['authTrueGameTime']}),
+            body: JSON.stringify({"id":data}),
         });
         const res = await rep.json();
         if (rep.ok){
             setAvatar(res.avatar);
-            setNom(res.nom);
             setDatenaissance(res.datenaissance);
             setMail(res.mail);
         }else{
@@ -76,9 +76,6 @@ function Profile() {
                 <h2 id="titreinfos">
                     Informations:
                 </h2>
-                <p className="name">
-                    {nom}
-                </p>
                 <p className="birthdate">
                     {datenaissance}
                 </p>
