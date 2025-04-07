@@ -19,7 +19,9 @@ const App = () => {
           <li>bla bla bla bla bla bla bla</li>
         </ul>
 
-        <img src="/Nino_t.png" alt="Logo" className="character_accueil" />
+        <Link to="/intro">
+          <img src="/Nino_t.png" alt="Logo" className="character_accueil" />
+        </Link>
       </section>
 
       <section className="games-section">

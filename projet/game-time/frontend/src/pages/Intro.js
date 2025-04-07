@@ -89,7 +89,7 @@ export default function IntroPage({ onClose }) {
     };
 
     useEffect(() => {
-        const savedResults = Cookies.get("gameProfile");
+        const savedResults = Cookies.get("GT_profilStats");
         if (savedResults) {
             try {
                 const parsedResults = JSON.parse(savedResults);
@@ -134,7 +134,7 @@ export default function IntroPage({ onClose }) {
     };
     
     const saveResultsToCookies = (results) => {
-        Cookies.set("gameProfile", JSON.stringify(results), { expires: 7 });
+        Cookies.set("GT_profilStats", JSON.stringify(results), { expires: 7 });
     };
 
     const sendResultsToBackend = async (results) => {
@@ -153,7 +153,7 @@ export default function IntroPage({ onClose }) {
     };
 
     const resetProfile = () => {
-        Cookies.remove("gameProfile");
+        Cookies.remove("GT_profilStats");
         setStep(0);
         setFinished(false);
         setAnswers({});
