@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const isAuthenticated = Cookies.get("authTrueGameTime");
 
-const Header = () => {
+const Header = ({genre}) => {
   return (
     <header className="header">
       <div className="logo">

@@ -1,0 +1,75 @@
+body {
+    position: relative;
+    margin: 0;
+    margin-left: 0vw;
+    font-family: Arial, sans-serif;
+    background-color: #E4F1FF;
+    width: 100%;
+    padding: 0vw;
+  }
+
+.theme-container {
+    text-align: center;
+}
+
+.theme-container.horror {
+  background-color: #ffd1d1;
+}
+.theme-container.action {
+  background-color: #d3a881;
+}
+
+.title-theme {
+    position: relative;
+    width: 100%;
+    display: flex;
+    /*background-color: #9400FF;*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: white;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: auto 300px;
+    overflow: hidden;
+  }
+
+.title-theme  h1{
+    font-size: 50px;
+    z-index: 20;
+}
+.title-theme.horror {
+  background-image: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(244,3,3,1) 58%, rgba(0,212,255,0) 80%),url('../img/horror.jpg');
+}
+.title-theme.action {
+  background-image: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(137,78,25,1) 60%, rgba(0,212,255,0) 80%),url('../img/action.jpg');
+}
+.title-theme.adventure {
+  background-image: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0,120,255,1) 64%, rgba(0,212,255,0) 80%),url('../img/adventure.jpg');
+}
+
+
+  .games-section {
+    margin: 10;
+  }
+
+  .games-section h2{
+    font-size: calc(14px + 1vw);
+  }
+
+  .footer {
+    position: relative;
+    width: 100vw;
+    background-color: #1a0339;
+    color: white;
+    margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer */
+    font-size: calc(7px + 1.5vw);
+    padding-top: 0.1px;
+    padding-bottom: 0.1px;
+  }
+  
+  .footer p {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }

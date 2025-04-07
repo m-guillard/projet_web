@@ -13,6 +13,17 @@
     left: 0; /* Colle le header au bord gauche */
     right: 0; /* Colle le header au bord droit */
 }
+.header.horror {
+    background-color: #900909;
+  }
+
+.header.action {
+    background-color: #60330a;
+  }
+
+.header.action {
+    background-color: #60330a;
+  }
 
 /* Navigation dans l’en-tête */
 .header nav {
