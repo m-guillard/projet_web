@@ -7,7 +7,7 @@ const gameSchema = new mongoose.Schema({
     cover_url: String,
     platforms: [String],
     summary: String,
-    release_date: Number,
+    first_release_date: Number,
     genres: [String],
     rating: Number,
     rating_count: Number,
