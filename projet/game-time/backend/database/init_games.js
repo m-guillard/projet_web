@@ -25,7 +25,7 @@ const Init_Games = async () => {
 
   try {
     for (const i of transformedGames){
-      await Game.replaceOne({name:i.name}, i);
+      await Game.replaceOne({name:i.name}, i,{ upsert: true });
     }
     console.log("✅ Données importées avec succès !");
   } catch (error) {
