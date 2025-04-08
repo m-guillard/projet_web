@@ -20,9 +20,18 @@
 .header.action {
     background-color: #60330a;
   }
+.header.fps {
+    background-color: #4f4e4e;
+  }
 
-.header.action {
-    background-color: #60330a;
+.header.sandbox {
+    background-color: #056b00;
+  }
+.header.moba {
+    background-color: #b87d10;
+  }
+.header.rpg {
+    background-color: #00ae94;
   }
 
 /* Navigation dans l’en-tête */
