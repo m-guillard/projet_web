@@ -19,6 +19,7 @@ const Init_Games = async () => {
 
   const transformedGames = games.map(game => ({
     ...game,
+    cover_url: game.cover ? game.cover.url: "",
     platforms: game.platforms ? game.platforms.map(p => p.name) : [],
     genres: game.genres ? game.genres.map(g => g.name) : []
   }));
