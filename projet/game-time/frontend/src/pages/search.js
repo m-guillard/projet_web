@@ -9,14 +9,12 @@ import Footer from './Footer';
 function Cardgame({game}){
   const navigate = useNavigate(); 
   return(
-   
-    <button class="boxgame" onClick={() => navigate("/Jeux")}>
+    <button className="boxgame" onClick={() => navigate("/Jeux", { state: { gameName: game.name } })}>
       <div>
         <h2>{game.name}</h2>
         <p>{game.genre}</p>
       </div>
     </button>
-
   );
 }
 
