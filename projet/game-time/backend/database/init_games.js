@@ -14,9 +14,9 @@ const Init_Games = async () => {
     process.exit(1);
   }
 
-  const jsonData = fs.readFileSync(__dirname + "/games.json", "utf-8");
+  const jsonData = fs.readFileSync(__dirname + "/games_temp.json", "utf-8");
   const games = JSON.parse(jsonData);
-
+  console.log(jsonData);
   const transformedGames = games.map(game => ({
     ...game,
     cover_url: game.cover ? game.cover.url: "",
