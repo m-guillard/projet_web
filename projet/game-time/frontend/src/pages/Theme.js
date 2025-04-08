@@ -3,6 +3,7 @@ import "../styles/theme.css";
 import Header from "./Header";  // Importation du bandeau Header du haut
 import Card_Game from "./Cardgame";
 import { useParams } from 'react-router-dom';
+import Footer from "./Footer";
 
 
 export default function Theme (){
@@ -24,11 +25,7 @@ export default function Theme (){
             <Card_Game type={"tendances"}/>
             </section>
 
-            <footer className="footer">
-                <p>
-                saluuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuut
-                </p>
-            </footer>
+            <Footer />
       </div>
     )
 }

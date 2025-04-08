@@ -72,12 +72,12 @@ body {
   margin: 10;
 }
 
-/*  Pied de page  */
+ /* Pied de page 
 .footer {
   position: relative;
   background-color: #60B5FF;
   color: white;
-  margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer */
+  margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer *//*
   font-size: calc(7px + 1.5vw);
   padding-top: 0.1px;
   padding-bottom: 0.1px;
@@ -86,7 +86,7 @@ body {
 .footer p {
   margin-top: 1vw;
   margin-bottom: 1vw;
-}
+} */
 
 
 

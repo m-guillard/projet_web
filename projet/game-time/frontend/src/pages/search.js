@@ -3,6 +3,7 @@ import "../styles/search.css";
 import { useState,useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from "./Header";  // Importation du bandeau Header du haut
+import Footer from './Footer';
 
 
 function Cardgame({game}){
@@ -230,6 +231,7 @@ export default function Search() {
         </div>
           {boxtheme()}
           {result()}
+          <Footer />
     </div>
     )
 }

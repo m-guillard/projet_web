@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Footer from "./Footer";
 
 function Champ({nom, valeur, onChange, type_champ="text", mdp=""}){
     return (
@@ -101,8 +102,9 @@ function Login(){
             setErreurInscr(data.message);
         }
     };
-    return(<div id="page_login">
+    return(<div>
     <Header />
+    <div id="page_login">
     <div id="fenetre_login">
         <div className="formulaire">
             <Titre nom={"Connexion"} />
@@ -128,6 +130,8 @@ function Login(){
             </form>
         </div>
         </div>
+        </div>
+        <Footer />
     </div>)
 }
 

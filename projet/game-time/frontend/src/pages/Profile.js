@@ -7,6 +7,7 @@ import Card_Game from "./Cardgame";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 
 function Profile() {
@@ -125,6 +126,7 @@ function Profile() {
             <h2>🔥 Jeux récemments joués</h2>
             <Card_Game type={"tendances"}/> */}
         </section>
+        <Footer />
     </div>)
 }
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import "../styles/jeux.css";
+import Footer from "./Footer";
 
 const Jeux = () => {
     const [game, setGame] = useState(null);
@@ -57,6 +58,7 @@ const Jeux = () => {
                 <p><strong>Date de sortie :</strong> {formatDate(game.first_release_date)}</p>
                 <p><strong>Plateformes :</strong>{game.platforms.join(", ")}</p>
             </div>
+            <Footer />
         </div>
     );
 };

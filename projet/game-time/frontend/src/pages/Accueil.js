@@ -2,6 +2,7 @@ import "../styles/Accueil.css";
 import { Link } from 'react-router-dom';  // Importation de Link pour la navigation
 import Header from "./Header";  // Importation du bandeau Header du haut
 import Card_Game from "./Cardgame";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -40,11 +41,7 @@ const App = () => {
         <Card_Game type={"tendances"}/>
       </section>
 
-      <footer className="footer">
-        <p>
-          saluuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuut
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };
