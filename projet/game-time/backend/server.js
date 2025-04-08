@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const Init_Games = require("./database/init_games");
+// const Init_Games = require("./database/init_games");
 
 // Import de toutes les routes
 const loginRoutes = require("./routes/login.js");
@@ -37,8 +37,8 @@ app.use('/ProfileGames', ProfileGames);
 // Connexion aux bases de données
 main().catch((err) => console.log(err));
 async function main() {
-  console.log("import des jeux");
-  await Init_Games();
+  // console.log("import des jeux");
+  // await Init_Games();
   console.log("connexion avec la base de donnée");
   await mongoose.connect(USERS_DB);
   console.log("Connexion à la base de données réussie  (wewe deso je raj des bricoles");
