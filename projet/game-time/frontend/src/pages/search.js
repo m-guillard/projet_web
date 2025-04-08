@@ -55,9 +55,9 @@ function Searchprofil({ person = [] }){
 
 export default function Search() {
     const location = useLocation();
-    const valeur = location.state;
+    const valeur = location.state; //récupération de la valeur de recherche donnée par le header
     const [value, setValue] = useState("");
-    useEffect(() => {setValue(valeur.value)});
+    useEffect(() => {setValue(valeur.value)}); //actualisation de la valeur affichée et recherchée
     const [searchShow, setSearchShow] = useState(false);
     const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
     const [selectedOptions, setSelectedOptions] = useState([]);
