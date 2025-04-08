@@ -12,24 +12,40 @@ import { useNavigate } from "react-router-dom";
 function Profile() {
     const navigate = useNavigate();
     const [finalResults, setFinalResults] = useState([]);
+    const [avatarname, setAvatarname] = useState('');
     const [avatar, setAvatar] = useState('');
     const [datenaissance, setDatenaissance] = useState('');
     const [mail,setMail] = useState('');
+    const [content,setContent] = useState([]);
 
     useEffect(() => {
-        // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
-        const savedResults = Cookies.get("GT_profilStats");
-        if (savedResults) {
-            try {
-                const parsedResults = JSON.parse(savedResults);
-                // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
-                if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
-                    setFinalResults(parsedResults);
+        async function getGames(){
+            // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
+            let savedResults = Cookies.get("GT_profilStats");
+            if (savedResults) {
+                try {
+                    const parsedResults = JSON.parse(savedResults);
+
+                    // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
+                    if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
+                        setFinalResults(parsedResults);
+                        savedResults = parsedResults;
+                    }
+                } catch (error) {
+                    console.error("Erreur lors du parsing des résultats:", error);
                 }
-            } catch (error) {
-                console.error("Erreur lors du parsing des résultats:", error);
+            }
+            const rep = await fetch('http://localhost:5000/ProfileGames', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({"stats":savedResults}),
+            });
+            const res = await rep.json();
+            if (rep.ok){
+                setContent(res);
             }
         }
+        getGames();
     }, []);
 
     const handleDeconnexion = async (e) => {
@@ -46,29 +62,30 @@ function Profile() {
         });
         const res = await rep.json();
         if (rep.ok){
+            setAvatarname(res.avatarname);
             setAvatar(res.avatar);
             setDatenaissance(res.datenaissance);
             setMail(res.mail);
         }else{
-            // handleDeconnexion();
+            handleDeconnexion();
         }
     };
     
-    getinfo();
+    useEffect(() => {getinfo()}, []);
 
     return(<div id="fenetre">
         <Header/>
         <div className="presentation">
             <div className="avatar">
-                <Avatar sx={{width:"calc(14px + 20vw)",height:"calc(14px + 20vw)"}}/>
+                <Avatar src={avatar} sx={{width:"calc(14px + 20vw)",height:"calc(14px + 20vw)"}}/>
                 <p>
-                    {avatar}
+                    {avatarname}
                 </p>
             </div>
             <div className="avatar2">
-                <Avatar sx={{width:"calc(30px + 40vw)",height:"calc(30px + 40vw)"}}/>
+                <Avatar src={avatar} sx={{width:"calc(30px + 40vw)",height:"calc(30px + 40vw)"}}/>
                 <p>
-                    {avatar}
+                    {avatarname}
                 </p>
             </div>
             <div className="infos">
@@ -101,12 +118,12 @@ function Profile() {
             )}
         </section>
         <section className="games-section">
-            <h2>🎮 Jeux préférés</h2>
-            <Card_Game type={"note"}/>
-            <h2>✨ Jeux pour toi</h2>
+            <h2>🎮 Jeux Personnalisés pour toi</h2>
+            <Card_Game type={["Personnalisé", finalResults]}/>
+            {/* <h2>✨ Jeux pour toi</h2>
             <Card_Game type={"découverte"}/>
             <h2>🔥 Jeux récemments joués</h2>
-            <Card_Game type={"tendances"}/>
+            <Card_Game type={"tendances"}/> */}
         </section>
     </div>)
 }

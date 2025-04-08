@@ -10,7 +10,10 @@ router.post('/', async (req, res) => {
 
     if (utilisateur) {
         const month = utilisateur.birthday.getMonth()+1;
-        return res.status(201).json({'avatar':utilisateur.username,'datenaissance':utilisateur.birthday.getDate().toString()+"/"+month+"/"+utilisateur.birthday.getFullYear().toString(),'mail':utilisateur.mail});
+        return res.status(201).json({'avatarname':utilisateur.username,
+                                     'avatar':utilisateur.avatar,
+                                     'datenaissance':utilisateur.birthday.getDate().toString()+"/"+month+"/"+utilisateur.birthday.getFullYear().toString(),
+                                     'mail':utilisateur.mail});
     }else{
         return res.status(400).json('erreur serveur, utilisateur non trouvé');
     }

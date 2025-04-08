@@ -11,6 +11,7 @@ const introRoutes = require("./routes/intro.js");
 const profileRoutes = require("./routes/fetchProfile.js");
 const gameRoutes = require("./routes/fetchGames.js");
 const accueilRoutes = require("./routes/accueil.js");
+const ProfileGames = require("./routes/ProfileGames.js");
 
 
 const PORT = 5000;
@@ -30,6 +31,7 @@ app.use('/intro', introRoutes);
 app.use('/fetchGames', gameRoutes);
 app.use('/fetchProfile', profileRoutes);
 app.use('/accueil', accueilRoutes);
+app.use('/ProfileGames', ProfileGames);
 
 
 // Connexion aux bases de données
