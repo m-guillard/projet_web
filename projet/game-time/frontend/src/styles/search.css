@@ -2,16 +2,6 @@ body {
     font-family: Arial, sans-serif;
     background-color: #E4F1FF; /* Bleu clair */
 }
-.navbar {
-    width: 100%;
-    background-color: #2e0066;
-    color: white;
-    font-size: 18px;
-    display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
 
 /*Searchbar*/
 
@@ -19,15 +9,20 @@ body {
     position: relative;
     width: 100%;
     display: flex;
-    background-color: #9400FF;
+    background-color: #AED2FF;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 200px;
 }
-
+.searchbar h1 {
+    font-family: 'Handjet', cursive;
+    font-size: 60px;
+    margin: 0;
+}
 .searchbar input {
     display: inline-block;
+    font-family: 'Handjet', cursive;
     width: 400px;
     font-size: 20px;
     border: 1px solid black;
@@ -35,23 +30,12 @@ body {
 }
 
 .searchbar button {
+    font-family: 'Handjet', cursive;
+    font-size: 20px;
     border: 1px solid black;
     background-color: #E4F1FF;
     border-radius: 5px;
     margin: 10px;
-}
-
-.scroll-menu {
-    position: absolute;
-    top: calc(100% -2px); 
-    transform: translateX(-50%); 
-    overflow-y: auto;
-    height: 300px;
-    background-color: #E4F1FF;
-    width: 400px; 
-    border: 2px solid black;
-    z-index: 20;
-    margin-bottom: 0; 
 }
 
 
@@ -84,7 +68,8 @@ body {
 .themebox{
     position: relative;
     display: flex;
-    font-size: 20px;
+    font-size: 40px;
+    font-family: 'Handjet', cursive;
     align-items: center;
     justify-content: center;
     border: 2px solid black;
@@ -119,6 +104,18 @@ body {
   }
   .themebox.adventure::before  {
     background-color:rgba(0,120,255,1);
+  }
+  .themebox.moba::before  {
+    background-color:rgba(218,165,32,1);
+  }
+  .themebox.fps::before  {
+    background-color:rgba(121,130,128,1);
+  }
+  .themebox.sandbox::before  {
+    background-color:rgba(83,198,20,1);
+  }
+  .themebox.rpg::before  {
+    background-color:rgba(109,255,230,1);
   }
   
   .themebox:hover::before,

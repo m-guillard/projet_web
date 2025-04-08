@@ -50,7 +50,24 @@ const Card_Game = (type) => {
         const {imgsrc, title} = content;
         console.log(title);
     }
-    
+    const searchGames = async (e) => {
+        //e.preventDefault();
+
+        const rep = await fetch('http://localhost:5000/accueil', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({type}),
+        });
+        const data = await rep.json();
+        console.log("Reponse du serveur :", data);
+
+        if(rep.ok) {
+            const gamefetch=data;
+        } else {
+            alert("Echec");
+        }
+    };
+    /// changer content par gamefetch
     return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
