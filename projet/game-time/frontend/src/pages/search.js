@@ -2,6 +2,7 @@ import React from 'react';
 import "../styles/search.css";
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from "./Header";  // Importation du bandeau Header du haut
 
 
 function Cardgame({game}){
@@ -52,7 +53,7 @@ function Searchprofil({ person = [] }){
 
 
 
-export default function Search({datagame,dataprofil}) {
+export default function Search({datagame}) {
     const [value, setValue] = useState("");
     const [searchShow, setSearchShow] = useState(false);
     const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
@@ -60,6 +61,7 @@ export default function Search({datagame,dataprofil}) {
     const [selectedType, setselectedType] = useState([]);
     const [filteredgame,setFilteredGames] =useState([]);
     const [filteredprofil,setFilteredProfil] = useState( []);
+    const navigate =useNavigate();
     
     useEffect(() => {
       let filtered = filteredgame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
@@ -135,9 +137,12 @@ export default function Search({datagame,dataprofil}) {
         return(
           <div class="theme-container">
           {themes.map((theme, index) => (
-            <div key={index} className="themebox">
+          <button key={index} className={`themebox ${theme.toLowerCase()}`} onClick={() => navigate(`/Theme/${theme.toLowerCase()}`)}>
+            <div>
               <p>{theme}</p>
-            </div>))}
+            </div>
+          </button>
+          ))}
         </div>
         )
       }
@@ -205,10 +210,7 @@ export default function Search({datagame,dataprofil}) {
 
     return (
     <div id="search">
-        <div class="navbar">
-            <span>Home</span>
-            <span>Recherche :</span>
-        </div>
+        <Header/>
 
         <div class="searchbar">
             <h1 >Recherche</h1>

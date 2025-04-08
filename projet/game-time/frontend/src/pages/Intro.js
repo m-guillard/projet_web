@@ -41,37 +41,42 @@ export default function IntroPage({ onClose }) {
         { text: "Aimes-tu les défis difficiles ?", category: "Difficulté" },
         { text: "L’histoire d’un jeu est-elle essentielle pour toi ?", category: "Histoire" },
         { text: "Aimes-tu les jeux de gestion de ressources ?", category: "Jeux de stratégie" },
-        // { text: "Tu préfères jouer seul ?", category: "Solo" },
-        // { text: "Tu apprécies les jeux exigeants ?", category: "Difficulté" },
-        // { text: "Aimes-tu les jeux narratifs ?", category: "Histoire" },
-        // { text: "Aimes-tu les jeux de gestion et de simulation ?", category: "Gestion" },
-        // { text: "Aimes-tu les jeux de stratégie ?", category: "Jeux de stratégie" },
-        // { text: "Les graphismes sont-ils importants pour toi ?", category: "Graphismes" },
-        // { text: "Tu préfères des jeux sans pression ?", category: "Relaxant" },
-        // { text: "Aimes-tu les jeux historiques ?", category: "Historique" },
-        // { text: "Aimes-tu les jeux de tir ?", category: "Tir" },
-        // { text: "Aimes-tu les jeux colorés et tranquilles ?", category: "Animaux mignons" },
-        // { text: "Tu préfères les jeux de science-fiction ou de fantasy ?", category: "Sci-Fi/Fantasy" },
-        // { text: "Les jeux demandant des réflexes rapides te plaisent-ils ?", category: "Dynamique" },
-        // { text: "Tu apprécies optimiser et gérer des systèmes ?", category: "Gestion" },
-        // { text: "Tu apprécies les jeux avec une ambiance relaxante ?", category: "Relaxant" },
-        // { text: "Aimes-tu les jeux en coopération ?", category: "Coopération" },
-        // { text: "Aimes-tu les jeux à la première personne ?", category: "1ère personne" },
-        // { text: "Es-tu fan des jeux de chats ou d’animaux mignons ?", category: "Animaux mignons" },
-        // { text: "Aimes-tu les jeux bac à sable ?", category: "Bac à sable" },
-        // { text: "Aimes-tu les jeux violents ?", category: "Violent" },
-        // { text: "Aimes-tu les jeux avec de guerre/batailles ?", category: "Batailles" },
-        // { text: "Aimes-tu les jeux d'exploration ?", category: "Exploration" },
-        // { text: "Aimes-tu les univers futuristes ?", category: "Sci-Fi/Fantasy" },
-        // { text: "Aimes-tu les jeux rapides et dynamiques ?", category: "Dynamique" },
-        // { text: "Aimes-tu les jeux de survie ?", category: "Survie" },
-        // { text: "Joues-tu souvent à des jeux mobiles ?", category: "Mobile" },
+        { text: "Tu préfères jouer seul ?", category: "Solo" },
+        { text: "Tu apprécies les jeux exigeants ?", category: "Difficulté" },
+        { text: "Aimes-tu les jeux narratifs ?", category: "Histoire" },
+        { text: "Aimes-tu les jeux de gestion et de simulation ?", category: "Gestion" },
+        { text: "Aimes-tu les jeux de stratégie ?", category: "Jeux de stratégie" },
+        { text: "Les graphismes sont-ils importants pour toi ?", category: "Graphismes" },
+        { text: "Tu préfères des jeux sans pression ?", category: "Relaxant" },
+        { text: "Aimes-tu les jeux historiques ?", category: "Historique" },
+        { text: "Aimes-tu les jeux de tir ?", category: "Tir" },
+        { text: "Aimes-tu les jeux colorés et tranquilles ?", category: "Animaux mignons" },
+        { text: "Tu préfères les jeux de science-fiction ou de fantasy ?", category: "Sci-Fi/Fantasy" },
+        { text: "Les jeux demandant des réflexes rapides te plaisent-ils ?", category: "Dynamique" },
+        { text: "Tu apprécies optimiser et gérer des systèmes ?", category: "Gestion" },
+        { text: "Tu apprécies les jeux avec une ambiance relaxante ?", category: "Relaxant" },
+        { text: "Aimes-tu les jeux en coopération ?", category: "Coopération" },
+        { text: "Aimes-tu les jeux à la première personne ?", category: "1ère personne" },
+        { text: "Es-tu fan des jeux de chats ou d’animaux mignons ?", category: "Animaux mignons" },
+        { text: "Aimes-tu les jeux bac à sable ?", category: "Bac à sable" },
+        { text: "Aimes-tu les jeux violents ?", category: "Violent" },
+        { text: "Aimes-tu les jeux avec de guerre/batailles ?", category: "Batailles" },
+        { text: "Aimes-tu les jeux d'exploration ?", category: "Exploration" },
+        { text: "Aimes-tu les univers futuristes ?", category: "Sci-Fi/Fantasy" },
+        { text: "Aimes-tu les jeux rapides et dynamiques ?", category: "Dynamique" },
+        { text: "Aimes-tu les jeux de survie ?", category: "Survie" },
+        { text: "Joues-tu souvent à des jeux mobiles ?", category: "Mobile" },
         ...Object.entries(games).map(([game, categories]) => (
             { text: `Aimes-tu les jeux du type ${game} ? (passe si jamais joué)`, category: categories }
         )).flat()
     ];
 
     const handleAnswer = (answer) => {
+        if (answer === "Terminer le test") {
+            setFinished(true); // Marque la fin du questionnaire
+            return; // Ne rien faire d'autre, on saute les questions restantes
+        }
+
         const categories = Array.isArray(questions[step].category) ? questions[step].category : [questions[step].category];
         setAnswers((prev) => {
             let updatedAnswers = { ...prev };
@@ -89,7 +94,7 @@ export default function IntroPage({ onClose }) {
     };
 
     useEffect(() => {
-        const savedResults = Cookies.get("gameProfile");
+        const savedResults = Cookies.get("GT_profilStats");
         if (savedResults) {
             try {
                 const parsedResults = JSON.parse(savedResults);
@@ -107,7 +112,7 @@ export default function IntroPage({ onClose }) {
         if (finished && Object.keys(answers).length > 0 && !hasBeenSaved.current){
           const results = computeResults(answers);
           saveResultsToCookies(results);
-      
+          
           const sendData = async () => {
             try {
               await sendResultsToBackend(results);
@@ -134,7 +139,7 @@ export default function IntroPage({ onClose }) {
     };
     
     const saveResultsToCookies = (results) => {
-        Cookies.set("gameProfile", JSON.stringify(results), { expires: 7 });
+        Cookies.set("GT_profilStats", JSON.stringify(results), { expires: 30 });
     };
 
     const sendResultsToBackend = async (results) => {
@@ -153,7 +158,7 @@ export default function IntroPage({ onClose }) {
     };
 
     const resetProfile = () => {
-        Cookies.remove("gameProfile");
+        Cookies.remove("GT_profilStats");
         setStep(0);
         setFinished(false);
         setAnswers({});
@@ -171,7 +176,7 @@ export default function IntroPage({ onClose }) {
                     <div className="question-box">
                         <h2>{questions[step].text}</h2>
                         <div className="buttons">
-                            {["Oui", "Non", "Neutre", "Passe"].map((option) => (
+                            {["Oui", "Non", "Neutre", "Terminer le test"].map((option) => (
                                 <button key={option} onClick={() => handleAnswer(option)}>
                                     {option}
                                 </button>
@@ -191,7 +196,7 @@ export default function IntroPage({ onClose }) {
                             </RadarChart>
                         </ResponsiveContainer>
                     ) : (
-                        <p>Chargement des résultats...</p>
+                        <p>Chargement des résultats... Ceci peut prendre plusieurs secondes, ne tapez pas dans l'écran svp.</p>
                     )}
                 </div>
             )}

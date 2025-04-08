@@ -87,3 +87,43 @@ body {
   margin-top: 1vw;
   margin-bottom: 1vw;
 }
+
+
+
+/* Conteneur pour l'image du personnage et la bulle */
+.character-container {
+  position: relative; /* Permet à la bulle de se positionner par rapport à ce conteneur */
+  display: inline-block; /* Le conteneur occupe l'espace nécessaire autour de l'image */
+}
+
+/* Bulle de dialogue au-dessus du personnage */
+.bubble {
+  position: absolute;  /* Positionnement par rapport à l'élément parent (personnage) */
+  width: 50vw;
+  top: -50px; /* Positionne la bulle au-dessus de l'image du personnage */
+  left: 90%;  /* Centre la bulle horizontalement par rapport à l'image */
+  background-color: #60B5FF; /* Couleur de fond de la bulle */
+  color: white;  /* Couleur du texte dans la bulle */
+  padding: 10px 10px;  /* Espacement interne dans la bulle */
+  border-radius: 15px;  /* Arrondi des coins de la bulle */
+  font-size: 1.5vw;  /* Taille de la police */
+  max-width: 20vw;  /* Largeur maximale de la bulle */
+  text-align: center;  /* Centrer le texte à l'intérieur de la bulle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Ombre portée pour donner de la profondeur */
+  
+  animation: bounce 1.5s infinite;
+}
+
+/* Création de la queue de la bulle */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;  /* Positionne la queue juste en dessous de la bulle */
+  left: 10%;  /* Centre la queue par rapport à la bulle */
+  transform: translateX(-50%);  /* Ajuste pour centrer la queue correctement */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;  /* Bord gauche de la queue */
+  border-right: 10px solid transparent;  /* Bord droit de la queue */
+  border-top: 10px solid #60B5FF;  /* Bord du haut de la queue */
+}

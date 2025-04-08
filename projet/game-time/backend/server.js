@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const loginRoutes = require("./routes/login.js");
 const searchRoutes = require("./routes/search.js");
 const introRoutes = require("./routes/intro.js");
-const gameRoutes = require("./routes/fetchGames.js");
+const profileRoutes = require("./routes/fetchProfile.js");
 
 const PORT = 5000;
 
@@ -24,6 +24,7 @@ app.use('/login', loginRoutes);
 app.use('/search', searchRoutes);
 app.use('/intro', introRoutes);
 app.use('/fetchGames', gameRoutes);
+app.use('/fetchProfile', profileRoutes);
 
 // Connexion aux bases de données
 main().catch((err) => console.log(err));

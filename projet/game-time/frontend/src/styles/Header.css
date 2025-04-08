@@ -13,6 +13,17 @@
     left: 0; /* Colle le header au bord gauche */
     right: 0; /* Colle le header au bord droit */
 }
+.header.horror {
+    background-color: #900909;
+  }
+
+.header.action {
+    background-color: #60330a;
+  }
+
+.header.action {
+    background-color: #60330a;
+  }
 
 /* Navigation dans l’en-tête */
 .header nav {
@@ -24,11 +35,15 @@
 }
 
 /* logo */
-.logo{
+.logo img{
     margin-left: 1vw;
     margin-bottom: 1vw;
+    margin-top: 1vw;
     font-size: calc(14px + 2.5vw);
+    width: 5vw;
 }
+
+
 
 /* Champ de recherche */
 .search {
@@ -38,6 +53,31 @@
     border: none;
     font-size: calc(14px + 1vw);
     width: 100%;
+}
+
+/* Liens (Home, Profil) */
+.header a {
+    color: white; /* Couleur blanche pour les liens */
+    text-decoration: none; /* Enlever le soulignement */
+    font-family: 'Arial', sans-serif; /* Police personnalisée */
+    font-size: calc(8px + 1.5vw); /* Ajuster la taille de la police */
+    transition: color 0.3s ease; /* Transition douce au survol */
+    white-space: nowrap;
+}
+
+.header a:hover {
+    color: #9400FF; /* Changer la couleur au survol */
+}
+
+/* Profil sans bordure autour */
+.profile {
+    color: white; /* Couleur du texte */
+    text-decoration: none; /* Enlever le soulignement */
+    font-family: 'Arial', sans-serif; /* Police personnalisée */
+    font-size: calc(12px + 1vw); /* Ajuster la taille de la police */
+    padding: 0; /* Enlever les bordures */
+    border: none; /* Enlever toute bordure autour de "Profil" */
+    cursor: pointer; /* Ajouter un curseur pointer */
 }
 
 /*  Bouton d'inscription/connexion  */
@@ -50,5 +90,14 @@
     border: none;
     border-radius: 0.5vw;
     cursor: pointer;
-    font-size: calc(10px + 0.vw);
-  }
+    font-size: 1vw;
+    width: 14vw; 
+    height: 3vw; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+    white-space: nowrap; /* Empêcher que le texte dépasse ou s'affiche sur plusieurs lignes */
+    min-width: 120px; 
+    min-height: 35px;
+}
