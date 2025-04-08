@@ -1,32 +1,27 @@
-export const fetchGames = async (gameName) => {
-    const CLIENT_ID = "9azw30noybrs4gmw1wrpdiifeoehxr";
-    const ACCESS_TOKEN = "rpcgns0s8hzjd4hd5ks763seblmuye";
+const express = require('express');
+const router = express.Router();
+const Game = require('../database/games');
 
+router.use(express.json());
+
+// Endpoint pour récupérer les données d'un jeu par nom
+router.post('/', async (req, res) => {
+    const {gameName} = req.body;
     try {
-        const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games", {
-            method: "POST",
-            headers: {
-                "Client-ID": CLIENT_ID,
-                "Authorization": `Bearer ${ACCESS_TOKEN}`,
-                "Content-Type": "application/json"
-            },
-            body: `search "${gameName}"; fields name, cover.url, platforms.name, summary, first_release_date; limit 1;`
-        });
+        // Recherche du jeu par nom dans la base de données
+        const game = await Game.findOne({ name: gameName });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("API Response:", data);
-
-        if (data && data.length > 0) {
-            return data[0];
+        if (game) {
+            // Si le jeu est trouvé, renvoie ses détails
+            res.status(201).json(game);
         } else {
-            throw new Error("No data found");
+            // Si aucun jeu n'est trouvé, renvoie une erreur 404
+            res.status(404).json({ error: 'Jeu non trouvé' });
         }
     } catch (error) {
-        console.error("Error fetching games:", error);
-        throw error;
+        // En cas d'erreur (par exemple, problème de base de données), renvoie une erreur 500
+        res.status(500).json({ error: 'Erreur lors de la récupération des données' });
     }
-};
+});
+
+module.exports = router;

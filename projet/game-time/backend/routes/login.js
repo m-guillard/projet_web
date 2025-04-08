@@ -5,13 +5,14 @@ const users_db = require('../database/users')
 
 router.use(express.json());
 
-const createUser = async(username, mail, bday, pswd) => {
+const createUser = async(username, mail, bday, pswd, path_avatar) => {
     try {
         const user = new users_db({
             username: username,
             password: pswd,
             mail: mail,
-            birthday: bday
+            birthday: bday,
+            avatar: path_avatar
         });
 
         await user.save();
@@ -26,7 +27,7 @@ router.post('/', async (req, res) => {
     const data = req.body;
     console.log('Données reçues :', {data});
 
-    if(data["page"] == "inscription"){
+    if(data.page == "inscription"){
 
         // On vérifier que userName n'est pas déjà dans la base
         var utilisateurs = await users_db.findOne({username: data["usernameInsc"]});
@@ -59,13 +60,14 @@ router.post('/', async (req, res) => {
         }else{
             // On hash le mot de passe
             const pswd_hash = await bcrypt.hash(data.passwordInsc, 10);
+            // On enregistre le chemin
+            const path = `/img/profile/p${data.avatar}.PNG`;
             // Tout est validé, on enregistre dans la base de données
-            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash);
+            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash, path);
             
             if (newUser){
                 utilisateur = await users_db.findOne({username: data.usernameInsc});
-                res.cookie('authTrueGameTime', utilisateur._id, {maxAge: 31*24*60*60*1000});
-                return res.status(201).json({message: "Inscription réussie"});
+                return res.status(201).json({message: "Inscription réussie", id:utilisateur._id});
             }else{
                 return res.status(500).json({message: "Erreur serveur lors de l'inscription"});
             }
@@ -75,7 +77,7 @@ router.post('/', async (req, res) => {
     }
     else if(data.page == "connexion"){
         // On vérifie qu'il existe le couple username/password
-        var utilisateur = await users_db.findOne({username: data["usernameConn"]});
+        var utilisateur = await users_db.findOne({username: data.usernameConn});
         if (!utilisateur) {
             return res.status(401).json({message: "Utilisateur inconnu"});
         } else if (data.passwordConn){
@@ -83,9 +85,7 @@ router.post('/', async (req, res) => {
             if (!isMatch){
                 return res.status(401).json({message: "Mot de passe incorrect"});
             } else {
-                utilisateur = await users_db.findOne({username: data.usernameInsc});
-                res.cookie('authTrueGameTime', utilisateur._id, {maxAge: 31*24*60*60*1000});
-                return res.status(201).json({message: "Connexion réussie"});
+                return res.status(201).json({message: "Connexion réussie", id:utilisateur._id});
             }
         }
     }

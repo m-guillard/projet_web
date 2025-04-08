@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+// Définir le schéma et le modèle
+const gameSchema = new mongoose.Schema({
+    igdb_id: Number,
     name: String,
-    genre : String,
-    rating : Number
+    cover_url: String,
+    platforms: [String],
+    summary: String,
+    first_release_date: Number,
+    genres: [String],
+    rating: Number,
+    rating_count: Number,
 });
-const Game = mongoose.model("Game", userSchema);
+
+const Game = mongoose.model("Game", gameSchema);
 module.exports = Game;

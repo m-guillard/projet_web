@@ -2,6 +2,7 @@ import "../styles/login.css";
 import { useState } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Champ({nom, valeur, onChange, type_champ="text", mdp=""}){
     return (
@@ -9,7 +10,7 @@ function Champ({nom, valeur, onChange, type_champ="text", mdp=""}){
         <li><label>{nom}</label></li>
         { mdp==="inscr" && <li className="precision">(Entre 8 et 50 caract., 1 chiffre min., 1 caract. spécial min., 1 majuscule min., 1 minuscule min.)</li>}
         <li><input type={type_champ} value={valeur} onChange={onChange}/></li>
-        { mdp==="conn" && <li className="oubli"><a href="https://google.com">Mot de passe oublié</a></li>}
+        { mdp==="conn" && <li className="oubli"><a href="https://www.fondation-alzheimer.org/">Mot de passe oublié</a></li>}
      </ul>)
 }
 
@@ -25,6 +26,21 @@ function Bouton({nom}){
     return(<input type="submit" name={nom} />)
 }
 
+function SelectionImage({num, valeur, onChange}){
+    return (<div className="photo-item"><label>
+        <input type="radio" name="images_profil" value={num} checked={valeur===num} onChange={onChange}/>
+        <img src={`/img/profile/p${num}.PNG`} alt={`Profil ${num}`} />
+    </label></div>)
+}
+
+function mapProfile(nbImages){
+    let liste_image = [];
+    for(let i=1; i<nbImages+1;i++){
+        liste_image.push(i);
+    }
+    return liste_image;
+}
+
 function Login(){
     const navigate = useNavigate();
     const [passwordInsc, setPasswordInsc] = useState("");
@@ -36,6 +52,9 @@ function Login(){
     const [verifPassword, setVerifPassword] = useState("");
     const [erreurInscr, setErreurInscr] = useState("");
     const [erreurConn, setErreurConn] = useState("");
+    const [imageSelected, setImageSelected] = useState(1);
+
+    const imagesProfile = mapProfile(4);
 
     // Gestion connexion
     const handleSubmitConnexion = async (e) => {
@@ -47,6 +66,8 @@ function Login(){
             body: JSON.stringify({"page":'connexion',usernameConn, passwordConn}),
         });
         const data = await rep.json();
+        console.log(data);
+        Cookies.set("authTrueGameTime", data.id, {expires: 30});
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
@@ -66,13 +87,13 @@ function Login(){
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({"page":'inscription',
-                usernameInsc, mail, birthday, passwordInsc, verifPassword}),
+                usernameInsc, mail, birthday, passwordInsc, verifPassword, imageSelected}),
         });
         const data = await rep.json();
         console.log("Reponse du serveur :", data);
 
         if(rep.ok) {
-            console.log("All is good");
+            Cookies.set("authTrueGameTime", data.id, {expires: 30});
             navigate("/profile");
         } else {
             // const data = await rep.json;
@@ -97,6 +118,7 @@ function Login(){
             <Titre nom={"Inscription"} />
             <Erreur erreur={erreurInscr} />
             <form onSubmit={handleSubmitInscription}>
+                <div id="selectionImage">{imagesProfile.map((num)=> <SelectionImage key={num} num={num} valeur={imageSelected} onChange={(e) => setImageSelected(Number(e.target.value))}/>)}</div>
                 <Champ nom={"Nom d'utilisateur *"} valeur={usernameInsc} onChange={(e) => setUsernameInsc(e.target.value)}/>
                 <Champ nom={"Mail *"} type_champ="email" valeur={mail} onChange={(e) => setMail(e.target.value)}/>
                 <Champ nom={"Date de naissance *"} type_champ="date" valeur={birthday} onChange={(e) => setBirthday(e.target.value)}/>

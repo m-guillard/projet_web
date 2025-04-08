@@ -17,23 +17,13 @@ function App() {
           <Route path="/" element={<Accueil />} />  {/* Route pour la page d'accueil */}
           <Route path="/login" element={<Login />} />  {/* Route pour la page Login */}
           <Route path="/profile" element={<Profile />}/> {/*Route pour la page de profile*/}
-          <Route path="/Jeux" element={<Jeux />} />  Route pour la page Login
+          <Route path="/Jeux" element={<Jeux />} />  {/*Route pour la page Login*/}
           <Route path="/intro" element={<Intro />}/> {/*Route pour la page de profile*/}
           <Route path="/Search" element={<Search datagame={initialDetail.Game} dataprofil={initialDetails.Profil}/>} />  {/*Route pour la page Search*/}
         </Routes>
       </div>
     </Router>
   );
-}
-
-let search = document.querySelector(".search");
-
-if (search != null) {
-  search.addEventListener("keydown", function(event) {
-    if (event.keyCode == '13') {
-      window.location = "/Search";
-    }
-  });
 }
 
 export default App;
