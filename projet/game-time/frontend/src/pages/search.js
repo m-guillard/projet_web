@@ -1,7 +1,7 @@
 import React from 'react';
 import "../styles/search.css";
 import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from "./Header";  // Importation du bandeau Header du haut
 
 
@@ -54,14 +54,17 @@ function Searchprofil({ person = [] }){
 
 
 export default function Search() {
+    const location = useLocation();
+    const valeur = location.state;
     const [value, setValue] = useState("");
+    useEffect(() => {setValue(valeur.value)});
     const [searchShow, setSearchShow] = useState(false);
     const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedType, setselectedType] = useState([]);
     const [filteredgame,setFilteredGames] =useState([]);
     const [filteredprofil,setFilteredProfil] = useState( []);
-    const navigate =useNavigate();
+    const navigate = useNavigate();
     
     useEffect(() => {
       let filtered = filteredgame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
