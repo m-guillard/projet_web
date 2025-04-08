@@ -38,7 +38,6 @@ function Profile() {
     };
 
     const getinfo = async () => {
-        console.log(document.cookie.toString());
         const data = Cookies.get('authTrueGameTime');
         const rep = await fetch('http://localhost:5000/fetchProfile', {
             method: "POST",

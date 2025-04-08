@@ -9,7 +9,7 @@ import Game from "./games.js"; // <--- vérifie le chemin ici
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const mongoDB = "mongodb://127.0.0.1:27017/games";
+const mongoDB = "mongodb://127.0.0.1:27017/users";
 
 try {
   await mongoose.connect(mongoDB);

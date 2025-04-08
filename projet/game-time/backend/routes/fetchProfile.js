@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const users_db = require('../database/users')
 
-
 router.use(express.json());
 
 router.post('/', async (req, res) => {

@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const fs = require("fs");
-const path = require("path");
 
 // Définir le schéma et le modèle
 const gameSchema = new mongoose.Schema({
