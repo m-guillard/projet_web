@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import "../styles/Header.css";  // Importation du fichier CSS spécifique au header
 import Cookies from "js-cookie";
 
-const Header = () => {
+const Header = ({genre}) => {
   const isAuthenticated = Cookies.get("authTrueGameTime");
   return (
-    <header className="header">
+    <header className={`header ${genre}`}>
       <div className="logo">
       <Link to="/">
         <img src="/Nini_qui_game.png" alt="Logo" />
