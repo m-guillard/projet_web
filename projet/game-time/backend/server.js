@@ -10,7 +10,7 @@ const searchRoutes = require("./routes/search.js");
 const introRoutes = require("./routes/intro.js");
 const profileRoutes = require("./routes/fetchProfile.js");
 const gameRoutes = require("./routes/fetchGames.js");
-const accueilRoutes = require("./routes/acceuil.js");
+const accueilRoutes = require("./routes/accueil.js");
 
 
 const PORT = 5000;

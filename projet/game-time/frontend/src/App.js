@@ -5,8 +5,7 @@ import Profile from './pages/Profile';
 import Jeux from './pages/Jeux';  // Page Jeux
 import Search from './pages/search';
 import Intro from './pages/Intro'
-import initialDetail from './datatest';
-import initialDetails from './datatest';
+import Theme from './pages/Theme';
 import './App.css';
 
 function App() {
@@ -19,7 +18,8 @@ function App() {
           <Route path="/profile" element={<Profile />}/> {/*Route pour la page de profile*/}
           <Route path="/Jeux" element={<Jeux />} />  {/*Route pour la page Login*/}
           <Route path="/intro" element={<Intro />}/> {/*Route pour la page de profile*/}
-          <Route path="/Search" element={<Search datagame={initialDetail.Game} dataprofil={initialDetails.Profil}/>} />  {/*Route pour la page Search*/}
+          <Route path="/Search" element={<Search />} />  {/*Route pour la page Search*/}
+          <Route path="/Theme/:genre" element={<Theme />}/>
         </Routes>
       </div>
     </Router>

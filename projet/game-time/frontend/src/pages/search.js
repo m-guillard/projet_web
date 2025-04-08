@@ -53,7 +53,7 @@ function Searchprofil({ person = [] }){
 
 
 
-export default function Search({datagame}) {
+export default function Search() {
     const [value, setValue] = useState("");
     const [searchShow, setSearchShow] = useState(false);
     const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
@@ -69,7 +69,7 @@ export default function Search({datagame}) {
         filtered = filtered.filter(item => selectedOptions.includes(item.genre));
       }
       setFilteredGames(filtered);
-    }, [value, selectedOptions, datagame]);
+    }, [value, selectedOptions]);
 
     const handleSubmitsearchprofile = async (e) => {
         //e.preventDefault();
