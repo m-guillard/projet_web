@@ -57,7 +57,7 @@ export default function Search() {
     const [value, setValue] = useState("");
     useEffect(() => {setValue(valeur.value)},[valeur]); //actualisation de la valeur affichée et recherchée
     const [searchShow, setSearchShow] = useState(false);
-    const themes =["horror","fighting","adventure","rpg","simulator","shooter","moba"];
+    const themes =["fighting","adventure","rpg","simulator","shooter","moba"];
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedType, setselectedType] = useState([]);
     const [filteredgame,setFilteredGames] =useState([]);

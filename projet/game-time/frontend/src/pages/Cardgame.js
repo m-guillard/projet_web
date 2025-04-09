@@ -74,11 +74,32 @@ const Card_Game = ({type,page}) => {
                 console.error("Erreur API:", err);
             }
         };
-    
-        fetchGames();
+        if (type != "Personnalisé" && page != "Theme"){
+            fetchGames();
+        }
     }, [type]);
 
-    if (games.length>0 && page=="accueil"){
+    useEffect(() => {
+        const fetchGames = async () => {
+            try {
+                const rep = await fetch('http://localhost:5000/themes', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({type}) 
+                });
+    
+                const data = await rep.json();
+                setGames(data);
+            } catch (err) {
+                console.error("Erreur API:", err);
+            }
+        };
+        if (page == "Theme"){
+            fetchGames();
+        }
+    }, [type]);
+
+    if (games.length>0 && page=="accueil" || games.length>0 && page=="Theme"){
     return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>

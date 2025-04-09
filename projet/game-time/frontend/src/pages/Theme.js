@@ -18,11 +18,11 @@ export default function Theme (){
 
             <section className="games-section">
             <h2>🎮 Jeux les mieux notés</h2>
-            <Card_Game type={"note"}/>
+            <Card_Game type={["note",genre]} page={"Theme"}/>
             <h2>✨ À découvrir</h2>
-            <Card_Game type={"découverte"}/>
+            <Card_Game type={["découverte",genre]} page={"Theme"}/>
             <h2>🔥 Jeux tendance</h2>
-            <Card_Game type={"tendances"}/>
+            <Card_Game type={["tendances",genre]} page={"Theme"}/>
             </section>
 
             <Footer genre={genre}/>
