@@ -1,7 +1,6 @@
 import "../styles/Cardgame.css"
 import { Card, CardMedia, Fab, Typography } from "@mui/material";
-import { useEffect, useEffect,useState } from "react";
-import Cookies from 'js-cookie';
+import { useEffect,useState } from "react";
 import Cookies from 'js-cookie';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +34,7 @@ const Card_Game = ({type,page}) => {
         console.log(title);
     }
       
-    useEffect(() => {
+    /*useEffect(() => {
         async function getGames(){
             // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
             let savedResults = Cookies.get("GT_profilStats");
@@ -63,7 +62,7 @@ const Card_Game = ({type,page}) => {
             }
         }
         getGames()
-    }, []);
+    }, []);*/
 
 
     useEffect(() => {
@@ -104,7 +103,7 @@ const Card_Game = ({type,page}) => {
             <Arrow direction={"right"} handleClick={() => ArrowClick("right")}/>
         </div>
     )}
-    if (content.length>0 && page=="profile"){       
+    /*if (content.length>0 && page=="profile"){       
         return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
@@ -122,7 +121,7 @@ const Card_Game = ({type,page}) => {
                 </Card>
             <Arrow direction={"right"} handleClick={() => ArrowClick("right")}/>
         </div>
-    )}
+    )}*/
 }
 
 export default Card_Game;
