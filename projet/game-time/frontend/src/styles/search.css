@@ -43,15 +43,16 @@ body {
 
 
 .boxgame{
-    font-size: 10px;
+    font-size: 15px;
+    font-family: 'Handjet', cursive;
     background-color: #E4F1FF;
     width: 100%;
 }
 
-.boxgame:hover{
-    font-size: 10px;
-    background-color: #E4F1FF;
-    width: 100%;
+.boxgame:hover,
+.boxgame:focus {
+  border: 4px solid #000000;
+  border-radius: 15px;
 }
 
 
@@ -140,7 +141,7 @@ body {
 }
 
 .filter-container{
+    font-family: 'Handjet', cursive;
     font-size: 16px;
-    width: 250px;
-    margin: 10px;
+    flex: 0 0 200px;
 }

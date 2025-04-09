@@ -9,14 +9,12 @@ import Footer from './Footer';
 function Cardgame({game}){
   const navigate = useNavigate(); 
   return(
-   
-    <button class="boxgame" onClick={() => navigate("/Jeux")}>
+    <button className="boxgame" onClick={() => navigate("/Jeux", { state: { gameName: game.name } })}>
       <div>
         <h2>{game.name}</h2>
-        <p>{game.genre}</p>
+        <p>{game.genres}</p>
       </div>
     </button>
-
   );
 }
 
@@ -58,22 +56,23 @@ export default function Search() {
     const location = useLocation();
     const valeur = location.state; //récupération de la valeur de recherche donnée par le header
     const [value, setValue] = useState("");
-    useEffect(() => {setValue(valeur.value)}); //actualisation de la valeur affichée et recherchée
+    useEffect(() => {setValue(valeur.value)},[valeur]); //actualisation de la valeur affichée et recherchée
     const [searchShow, setSearchShow] = useState(false);
-    const themes =["Horror","Action","Adventure","RPG","Sandbox","FPS","MOBA"];
+    const themes =["horror","action","adventure","rpg","sandbox","fps","moba"];
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [selectedType, setselectedType] = useState([]);
     const [filteredgame,setFilteredGames] =useState([]);
     const [filteredprofil,setFilteredProfil] = useState( []);
+    const [rawgame, setRawgame] = useState([]);
     const navigate = useNavigate();
     
     useEffect(() => {
-      let filtered = filteredgame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
+      let filtered = rawgame.filter(item => item.name.toLowerCase().includes(value.toLowerCase()));
       if (selectedOptions.length > 0) {
-        filtered = filtered.filter(item => selectedOptions.includes(item.genre));
+        filtered = filtered.filter(item => item.genres.some(type => selectedOptions.includes(type.toLowerCase())) );
       }
       setFilteredGames(filtered);
-    }, [value, selectedOptions]);
+    }, [value, selectedOptions,rawgame]);
 
     const handleSubmitsearchprofile = async (e) => {
         //e.preventDefault();
@@ -105,7 +104,7 @@ export default function Search() {
       console.log("Reponse du serveur :", data);
 
       if(rep.ok) {
-          setFilteredGames(data)
+          setRawgame(data)
       } else {
           alert("Echec");
       }
@@ -141,9 +140,9 @@ export default function Search() {
         return(
           <div class="theme-container">
           {themes.map((theme, index) => (
-          <button key={index} className={`themebox ${theme.toLowerCase()}`} onClick={() => navigate(`/Theme/${theme.toLowerCase()}`)}>
+          <button key={index} className={`themebox ${theme}`} onClick={() => navigate(`/Theme/${theme}`)}>
             <div>
-              <p>{theme}</p>
+              <p>{theme.toUpperCase()}</p>
             </div>
           </button>
           ))}
@@ -203,7 +202,7 @@ export default function Search() {
               checked={selectedOptions.includes(theme)}
               onChange={handleCheckboxChangeGenre}
               />
-            <label>{theme}</label>
+            <label>{theme.toUpperCase()}</label>
             </div>))}
             
           </div>
@@ -236,24 +235,4 @@ export default function Search() {
     )
 }
 
-/*<div>
-    {search()}
-  </div>
 
-  const Scroll = (props) => {
-  return( 
-    <div class="scroll-menu">
-      {props.children}
-    </div>	
-  );
-}
-
-function search(){
-      if (searchShow){
-        return(<Scroll>
-          <Searchlist person={filteredprofil} games={filteredgame}/>
-        </Scroll>);
-      }
-      return null;
-    }
-  */
