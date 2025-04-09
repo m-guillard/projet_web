@@ -42,6 +42,7 @@ function Profile() {
                 body: JSON.stringify({"stats":savedResults}),
             });
             const res = await rep.json();
+            console.log(res);
             if (rep.ok){
                 setContent(res);
             }
