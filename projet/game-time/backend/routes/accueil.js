@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
                 { $limit: 10 }
             ]);
             res.status(200).json(games);
-        } else if (data["type"]  === 'tendance') {
+        } else if (data["type"]  === 'tendances') {
             const games = await games_db.aggregate([
                 { $sort: { rating_count: -1 } },
                 { $limit: 10 }
