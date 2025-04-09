@@ -12,44 +12,30 @@ import Footer from "./Footer";
 
 function Profile() {
     const navigate = useNavigate();
+
     const [finalResults, setFinalResults] = useState([]);
     const [avatarname, setAvatarname] = useState('');
     const [avatar, setAvatar] = useState('');
     const [datenaissance, setDatenaissance] = useState('');
     const [mail,setMail] = useState('');
-    const [content,setContent] = useState([]);
 
     useEffect(() => {
-        async function getGames(){
-            // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
-            let savedResults = Cookies.get("GT_profilStats");
-            const idUser = Cookies.get('authTrueGameTime');
-            if (savedResults && idUser) {
-                try {
-                    const parsedResults = JSON.parse(savedResults);
+        // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
+        let savedResults = Cookies.get("GT_profilStats");
+        if (savedResults) {
+            try {
+                const parsedResults = JSON.parse(savedResults);
 
-                    // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
-                    if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
-                        setFinalResults(parsedResults);
-                        savedResults = parsedResults;
-                    }
-                } catch (error) {
-                    console.error("Erreur lors du parsing des résultats:", error);
+                // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
+                if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
+                    setFinalResults(parsedResults);
+                    savedResults = parsedResults;
                 }
-            }
-            const rep = await fetch('http://localhost:5000/ProfileGames', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"stats":savedResults, "idUser":idUser}),
-            });
-            const res = await rep.json();
-            console.log(res);
-            if (rep.ok){
-                setContent(res);
+            } catch (error) {
+                console.error("Erreur lors du parsing des résultats:", error);
             }
         }
-        getGames();
-    }, []);
+    },[])
 
     const handleDeconnexion = async (e) => {
         Cookies.remove('authTrueGameTime');
@@ -123,7 +109,7 @@ function Profile() {
         </section>
         <section className="games-section">
             <h2>🎮 Jeux Personnalisés pour toi</h2>
-            <Card_Game type={["Personnalisé", finalResults]}/>
+            <Card_Game type={"Personnalisé"}/>
             {/* <h2>✨ Jeux pour toi</h2>
             <Card_Game type={"découverte"}/>
             <h2>🔥 Jeux récemments joués</h2>
