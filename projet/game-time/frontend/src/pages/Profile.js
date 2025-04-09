@@ -12,6 +12,7 @@ import Footer from "./Footer";
 
 function Profile() {
     const navigate = useNavigate();
+
     const [finalResults, setFinalResults] = useState([]);
     const [avatarname, setAvatarname] = useState('');
     const [avatar, setAvatar] = useState('');
@@ -19,22 +20,22 @@ function Profile() {
     const [mail,setMail] = useState('');
 
     useEffect(() => {
-            // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
-            let savedResults = Cookies.get("GT_profilStats");
-            if (savedResults) {
-                try {
-                    const parsedResults = JSON.parse(savedResults);
+        // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
+        let savedResults = Cookies.get("GT_profilStats");
+        if (savedResults) {
+            try {
+                const parsedResults = JSON.parse(savedResults);
 
-                    // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
-                    if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
-                        setFinalResults(parsedResults);
-                        savedResults = parsedResults;
-                    }
-                } catch (error) {
-                    console.error("Erreur lors du parsing des résultats:", error);
+                // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
+                if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
+                    setFinalResults(parsedResults);
+                    savedResults = parsedResults;
                 }
+            } catch (error) {
+                console.error("Erreur lors du parsing des résultats:", error);
             }
-    }, []);
+        }
+    },[])
 
     const handleDeconnexion = async (e) => {
         Cookies.remove('authTrueGameTime');
@@ -108,7 +109,7 @@ function Profile() {
         </section>
         <section className="games-section">
             <h2>🎮 Jeux Personnalisés pour toi</h2>
-            <Card_Game type={"Personnalisé"} page={"profile"}/>
+            <Card_Game type={"Personnalisé"}/>
             {/* <h2>✨ Jeux pour toi</h2>
             <Card_Game type={"découverte"}/>
             <h2>🔥 Jeux récemments joués</h2>

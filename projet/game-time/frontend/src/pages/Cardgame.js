@@ -1,16 +1,18 @@
 import "../styles/Cardgame.css"
 import { Card, CardMedia, Fab, Typography } from "@mui/material";
-import { useEffect,useState } from "react";
+import { useEffect, useEffect,useState } from "react";
+import Cookies from 'js-cookie';
 import Cookies from 'js-cookie';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
 
 const Card_Game = ({type,page}) => {
+
+
     const [index, setIndex] = useState(0);
     const [games,setGames] = useState([]);
     const [content,setContent] = useState([{cover_url:null}]);
     const navigate = useNavigate();
-
     //faire demande de contents en backend dépendant du type qu'on veut:
     const nmb_len_total_cards = 10;
 
