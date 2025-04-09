@@ -122,15 +122,15 @@ const Card_Game = ({type,page}) => {
     return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
-                <Card className="game-card" onClick={() => navigate("/Jeux", { state: { gameName: games[index].name } })} sx={{borderRadius:"2vw"}} >
+                <Card className="game-card" onClick={() => navigate("/Jeux", { state: { gameName: content[index].name } })} sx={{borderRadius:"2vw"}} >
                     <CardMedia component="img" src={content[index].cover_url} />
                     <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw", backgroundColor:"#00000055"}}>{content[index].name}</Typography>
                 </Card>
-                <Card className="game-card midcard" onClick={() => navigate("/Jeux", { state: { gameName: games[(index+1)%nmb_len_total_cards].name } })} sx={{borderRadius:"2vw"}}>
+                <Card className="game-card midcard" onClick={() => navigate("/Jeux", { state: { gameName: content[(index+1)%nmb_len_total_cards].name } })} sx={{borderRadius:"2vw"}}>
                     <CardMedia component="img" src={content[(index+1)%nmb_len_total_cards].cover_url} />
                     <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw", backgroundColor:"#00000055"}}>{content[(index+1)%nmb_len_total_cards].name}</Typography>
                 </Card>
-                <Card className="game-card lastcard" onClick={() => navigate("/Jeux", { state: { gameName: games[(index+2)%nmb_len_total_cards].name } })} sx={{borderRadius:"2vw"}}>
+                <Card className="game-card lastcard" onClick={() => navigate("/Jeux", { state: { gameName: content[(index+2)%nmb_len_total_cards].name } })} sx={{borderRadius:"2vw"}}>
                     <CardMedia component="img" src={content[(index+2)%nmb_len_total_cards].cover_url} />
                     <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw", backgroundColor:"#00000055"}}>{content[(index+2)%nmb_len_total_cards].name}</Typography>
                 </Card>

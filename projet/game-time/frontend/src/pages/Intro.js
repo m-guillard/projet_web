@@ -53,7 +53,6 @@ export default function IntroPage({ onClose }) {
         { text: "Aimes-tu les jeux historiques ?", category: "Historique" },
         { text: "Aimes-tu les jeux de tir ?", category: "Tir" },
         { text: "Aimes-tu les jeux colorés et tranquilles ?", category: "Animaux mignons" },
-        { text: "Tu préfères les jeux de science-fiction ou de fantasy ?", category: "Sci-Fi/Fantasy" },
         { text: "Les jeux demandant des réflexes rapides te plaisent-ils ?", category: "Dynamique" },
         { text: "Tu apprécies optimiser et gérer des systèmes ?", category: "Gestion" },
         { text: "Tu apprécies les jeux avec une ambiance relaxante ?", category: "Relaxant" },

@@ -71,7 +71,7 @@ body {
 
 .character_accueil {
   font-size: 50px;
-  margin-top: 2vw;
+  margin-top: 5vw;
   margin-bottom: 10px;
   right: 10vw;
   animation: bounce 1.5s infinite;
@@ -112,7 +112,7 @@ body {
 .bubble {
   position: absolute;  /* Positionnement par rapport à l'élément parent (personnage) */
   width: 25vw;
-  margin-top: 2vw;
+  margin-top: 5vw;
   top: -50px; /* Positionne la bulle au-dessus de l'image du personnage */
   left: 90%;  /* Centre la bulle horizontalement par rapport à l'image */
   background-color: #60B5FF; /* Couleur de fond de la bulle */
