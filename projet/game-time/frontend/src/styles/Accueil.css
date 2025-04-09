@@ -15,10 +15,11 @@ body {
   margin: 0;
   margin-left: 0vw;
   font-family: Arial, sans-serif;
+  font-variant: small-caps;
   background-color: #E4F1FF;
   width: 100%;
   padding: 0vw;
-}
+} 
 
 /* Conteneur principal qui centre le contenu */
 .container {
@@ -40,6 +41,7 @@ body {
   font-size: calc(14px + 1.5vw);
 }
 
+
 .games-section h2{
   font-size: calc(14px + 1vw);
 }
@@ -51,16 +53,26 @@ body {
 
 /* Pour la liste à point */
 .hero ul {
-  font-size: calc(14px + 1vw);
+  font-size: calc(14px + 0.5vw);
+  list-style: none; /* Enlève les puces */
   text-align: left; /* Aligner le texte à gauche */
   padding-left: calc(14px + 2vw); /* Ajuster l'espace entre le bord et les puces */
   margin: 0 auto; /* Centrer la liste tout en gardant le texte à gauche */
   /*display: inline-block;*/ /* Évite que la liste prenne toute la largeur */
 }
 
+.hero ul li::before {
+  content: "→ "; /* Tu peux changer par "➜", "➡", "➤", etc. */
+  color: #000000; /* Couleur de la flèche */
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em; /* Espace réservé avant le texte */
+}
+
 .character_accueil {
   font-size: 50px;
-  margin-bottom: 20px;
+  margin-top: 2vw;
+  margin-bottom: 10px;
   right: 10vw;
   animation: bounce 1.5s infinite;
   width: 25vw;
@@ -77,7 +89,7 @@ body {
   position: relative;
   background-color: #60B5FF;
   color: white;
-  margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer *//*
+  margin-top: 2vw; /* Ajoute un espace entre la section précédente et le footer //
   font-size: calc(7px + 1.5vw);
   padding-top: 0.1px;
   padding-bottom: 0.1px;
@@ -99,7 +111,8 @@ body {
 /* Bulle de dialogue au-dessus du personnage */
 .bubble {
   position: absolute;  /* Positionnement par rapport à l'élément parent (personnage) */
-  width: 50vw;
+  width: 25vw;
+  margin-top: 2vw;
   top: -50px; /* Positionne la bulle au-dessus de l'image du personnage */
   left: 90%;  /* Centre la bulle horizontalement par rapport à l'image */
   background-color: #60B5FF; /* Couleur de fond de la bulle */
@@ -107,7 +120,7 @@ body {
   padding: 10px 10px;  /* Espacement interne dans la bulle */
   border-radius: 15px;  /* Arrondi des coins de la bulle */
   font-size: 1.5vw;  /* Taille de la police */
-  max-width: 20vw;  /* Largeur maximale de la bulle */
+  max-width: 25vw;  /* Largeur maximale de la bulle */
   text-align: center;  /* Centrer le texte à l'intérieur de la bulle */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Ombre portée pour donner de la profondeur */
   

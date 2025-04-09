@@ -10,14 +10,15 @@ const App = () => {
       <Header />
 
       <section className="hero">
-        <h1>Rejoignez la plus grande communauté de fans de jeux vidéo au monde</h1>
-        <p className="subtext">- non c'est toujours pas pompé sur TVTime</p>
+        <h1>Rejoins la plus grande communauté de fans de jeux vidéo au monde</h1>
+        <p className="subtext">Et trouve le jeu qui reflète l'état de ton âme 🙂 </p>
         <ul> 
-          <li>Gardez une trace des jeux auxquels vous avez joué</li>
-          <li>Ayez une idée du temps passé à jouer grâce à notre compteur intégré</li>
-          <li>Accédez aux jeux à la une, pour savoir à quoi jouer ensuite</li>
-          <li>Personnalisez votre profil, et découvrez ceux des autres gamers</li>
-          <li>bla bla bla bla bla bla bla</li>
+          <li>Génère ton profil personnalisé grâce à notre monstrueux questionnaire</li>
+          <li>A partir de ce profil, nous te générons un jeu auquel tu n'as pas encore joué, qui te correspond !</li>
+          <li>Accède aux jeux à la une, suivant les critères de ton choix</li>
+          <li>Garde une trace des jeux auxquels tu as joué, et laisse ton avis pour les autres joueurs !</li>
+          <li>Personnalise ton profil, et découvre ceux des autres gamers</li>
+          <li>Découvre des informations sur les jeux qui t'intéressent</li>
         </ul>
 
         
