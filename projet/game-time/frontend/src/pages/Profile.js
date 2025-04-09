@@ -22,8 +22,17 @@ function Profile() {
     useEffect(() => {
         async function getGames(){
             // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
-            let savedResults = Cookies.get("GT_profilStats");
             const idUser = Cookies.get('authTrueGameTime');
+            const repStat = await fetch('http://localhost:5000/statsProfile', {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify({idUser}),
+            });
+            const resStat = await repStat.json();
+            let savedResults = {}
+            if (resStat.ok){
+                savedResults = resStat.message;
+            }
             if (savedResults && idUser) {
                 try {
                     const parsedResults = JSON.parse(savedResults);
@@ -40,7 +49,7 @@ function Profile() {
             const rep = await fetch('http://localhost:5000/ProfileGames', {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"stats":savedResults, "idUser":idUser}),
+                body: JSON.stringify({"stats":savedResults}),
             });
             const res = await rep.json();
             console.log(res);
