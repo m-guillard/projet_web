@@ -1,25 +1,127 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #dcecff;
+    background-color: #000000;
     margin: 0;
     padding: 0;
 }
+
 .card {
-    background-color: #9400FF;
+    background-color: #AED2FF;
     width: 80%;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
     margin: 50px auto;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    color: black;
 }
-.card img {
-    width: 20%;
-    border-radius: 5px;
+
+.game-header {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
 }
-.note {
+
+.card-image {
+    flex: 0 0 250px;
+}
+
+.card-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-info h2 {
+    color: grey;
+    margin-top: 0;
+    font-size: 28px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 20px 0;
+}
+
+.star {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.star.full {
     color: gold;
 }
+
+.star.half {
+    position: relative;
+    color: gold;
+}
+
+.star.empty {
+    color: white;
+}
+
+.rating-number {
+    margin-left: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.rating-count {
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-top: 5px;
+}
+
+.card-content {
+    width: 100%;
+}
+
+.card-content p {
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+.plateformes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
 .plateformes img {      
     width: 25px;
     margin-right: 5px;
+    vertical-align: middle;
+}
+
+.no-rating {
+    color: #e0e0e0;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .game-header {
+        flex-direction: column;
+    }
+    
+    .card-image {
+        flex: 0 0 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
 }
