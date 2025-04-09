@@ -30,18 +30,25 @@ function Profile() {
             });
             const resStat = await repStat.json();
             let savedResults = {}
-            if (resStat.ok){
-                savedResults = resStat.message;
+            if (repStat.ok){
+                savedResults = resStat.stats;
+                console.log(savedResults)
+            }
+            else{
+                console.log("Il y a une erreur")
+                console.log(resStat.message)
+                console.error(resStat.message)
             }
             if (savedResults && idUser) {
                 try {
-                    const parsedResults = JSON.parse(savedResults);
+                    const parsedResults = savedResults;
 
                     // Vérifier que les données sont sous forme d'un tableau avec la structure attendue
                     if (Array.isArray(parsedResults) && parsedResults.every(r => r.category && typeof r.score === "number")) {
                         setFinalResults(parsedResults);
                         savedResults = parsedResults;
                     }
+                    Cookies.set("GT_profilStats", JSON.stringify(savedResults), { expires: 30 });
                 } catch (error) {
                     console.error("Erreur lors du parsing des résultats:", error);
                 }

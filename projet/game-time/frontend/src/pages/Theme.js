@@ -9,7 +9,7 @@ import Footer from "./Footer";
 export default function Theme (){
     const {genre}=useParams();
 
-    return(
+    return(<div>
         <div className={`theme-container ${genre}`}>
             <Header genre={genre}/>
             <div className={`title-theme ${genre}`}>
@@ -25,7 +25,8 @@ export default function Theme (){
             <Card_Game type={"tendances"}/>
             </section>
 
-            <Footer />
+      </div>
+      <Footer />
       </div>
     )
 }

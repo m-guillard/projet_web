@@ -68,21 +68,14 @@ function Login(){
     const imagesProfile = mapProfile(4);
 
     // Gestion connexion
-    const getCookies = () => {
-        const savedResults = Cookies.get("GT_profilStats");
-        if (savedResults){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
     const handleSubmitConnexion = async (e) => {
         e.preventDefault();
         let data_send = {};
+        const cookie = Cookies.get("GT_profilStats")
+        let categories = {};
 
-        if(lierStats){
-            const categories = JSON.parse(Cookies.get("GT_profilStats"));
+        if(cookie){
+            categories = JSON.parse(cookie);
             data_send = {"page":'connexion',usernameConn, passwordConn, categories}
         }else{
             data_send = {"page":'connexion',usernameConn, passwordConn}
@@ -111,9 +104,10 @@ function Login(){
     const handleSubmitInscription = async (e) => {
         e.preventDefault();
         console.log(lierStats);
+        const cookie = Cookies.get("GT_profilStats")
         let categories = {};
-        if(lierStats){
-            categories = JSON.parse(Cookies.get("GT_profilStats"));
+        if(cookie){
+            categories = JSON.parse(cookie);
         }
 
         const rep = await fetch('http://localhost:5000/login', {
