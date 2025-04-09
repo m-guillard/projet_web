@@ -3,6 +3,7 @@ import { useRef } from "react";
 import "../styles/Intro.css";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 export default function IntroPage({ onClose }) {
@@ -11,6 +12,7 @@ export default function IntroPage({ onClose }) {
     const [answers, setAnswers] = useState({});
     const [finished, setFinished] = useState(false);
     const hasBeenSaved = useRef(false);
+    const navigate = useNavigate();
 
 
     const games = {
@@ -114,11 +116,11 @@ export default function IntroPage({ onClose }) {
           saveResultsToCookies(results);
           
           const sendData = async () => {
-            try {
-              await sendResultsToBackend(results);
-            } catch (error) {
-              console.error("Erreur lors de l'envoi des résultats :", error);
-            }
+            // try {
+            //   await sendResultsToBackend(results);
+            // } catch (error) {
+            //   console.error("Erreur lors de l'envoi des résultats :", error);
+            // }
             setFinalResults(results);
           };
       
@@ -142,20 +144,20 @@ export default function IntroPage({ onClose }) {
         Cookies.set("GT_profilStats", JSON.stringify(results), { expires: 30 });
     };
 
-    const sendResultsToBackend = async (results) => {
-        try {
-            const response = await fetch("http://localhost:5000/intro", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(results),
-            });
+    // const sendResultsToBackend = async (results) => {
+    //     try {
+    //         const response = await fetch("http://localhost:5000/intro", {
+    //             method: "POST",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify(results),
+    //         });
 
-            const data = await response.json();
-            console.log("Réponse du backend :", data);
-        } catch (error) {
-            console.error("Erreur lors de l'envoi des résultats :", error);
-        }
-    };
+    //         const data = await response.json();
+    //         console.log("Réponse du backend :", data);
+    //     } catch (error) {
+    //         console.error("Erreur lors de l'envoi des résultats :", error);
+    //     }
+    // };
 
     const resetProfile = () => {
         Cookies.remove("GT_profilStats");
@@ -201,6 +203,7 @@ export default function IntroPage({ onClose }) {
                 </div>
             )}
             {finished && <button onClick={resetProfile}>Refaire le test</button>}
+            {finished && <button onClick={() => navigate("/login")}>Lier le test à votre compte</button>}
         </div>
     );
 }

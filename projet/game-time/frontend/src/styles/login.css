@@ -125,3 +125,46 @@ input[type="submit"]:hover {
 .photo-item input[type="radio"]:checked + img {
     border-color: #9400FF; /* Bordure violette pour l'image sélectionnée */
 }
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;               /* Petit espace entre la case et le texte */
+    margin: 1vw 0;
+    max-width: 100%;           /* Ne dépasse pas du conteneur */
+    white-space: nowrap;       /* Garde le texte sur une seule ligne */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #9400FF;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;            /* Ne rétrécit pas quand le texte est long */
+}
+
+.checkbox input[type="checkbox"]:checked {
+    background-color: #9400FF;
+}
+
+.checkbox input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.checkbox input[type="checkbox"]:checked::after {
+    display: block;
+}

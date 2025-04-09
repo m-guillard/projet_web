@@ -23,7 +23,8 @@ function Profile() {
         async function getGames(){
             // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
             let savedResults = Cookies.get("GT_profilStats");
-            if (savedResults) {
+            const idUser = Cookies.get('authTrueGameTime');
+            if (savedResults && idUser) {
                 try {
                     const parsedResults = JSON.parse(savedResults);
 
@@ -39,9 +40,10 @@ function Profile() {
             const rep = await fetch('http://localhost:5000/ProfileGames', {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"stats":savedResults}),
+                body: JSON.stringify({"stats":savedResults, "idUser":idUser}),
             });
             const res = await rep.json();
+            console.log(res);
             if (rep.ok){
                 setContent(res);
             }
@@ -51,6 +53,7 @@ function Profile() {
 
     const handleDeconnexion = async (e) => {
         Cookies.remove('authTrueGameTime');
+        Cookies.remove("GT_profilStats");
         navigate('/Login');
     };
 

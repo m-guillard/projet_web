@@ -5,14 +5,42 @@ const users_db = require('../database/users')
 
 router.use(express.json());
 
-const createUser = async(username, mail, bday, pswd, path_avatar) => {
+const modifyCategory = async(categories, userId) => {
+    try {
+        const user = await users_db.findById(userId);
+        const mapCategory = new Map(
+            categories.map(item => [item.category, item.score])
+          )
+        user.category = mapCategory;
+
+        await user.save();
+    } catch (error) {
+        return false;
+    }
+    return true;
+};
+
+const createUser = async(username, mail, bday, pswd, path_avatar, categories) => {
+    console.log("Catégories reçues dans createUser :", categories);
+
+    try{
+    const mapCategory = new Map(
+        categories.map(item => [item.category, item.score])
+      )
+    } catch {
+        mapCategory = {};
+    }
+
+    console.log(mapCategory);
+
     try {
         const user = new users_db({
             username: username,
             password: pswd,
             mail: mail,
             birthday: bday,
-            avatar: path_avatar
+            avatar: path_avatar,
+            category: mapCategory
         });
 
         await user.save();
@@ -61,9 +89,9 @@ router.post('/', async (req, res) => {
             // On hash le mot de passe
             const pswd_hash = await bcrypt.hash(data.passwordInsc, 10);
             // On enregistre le chemin
-            const path = `/img/profile/p${data.avatar}.PNG`;
+            const path = `/img/profile/p${data.imageSelected}.PNG`;
             // Tout est validé, on enregistre dans la base de données
-            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash, path);
+            const newUser = await createUser(data.usernameInsc, data.mail, data.birthday, pswd_hash, path, data.categories);
             
             if (newUser){
                 utilisateur = await users_db.findOne({username: data.usernameInsc});
@@ -85,6 +113,13 @@ router.post('/', async (req, res) => {
             if (!isMatch){
                 return res.status(401).json({message: "Mot de passe incorrect"});
             } else {
+                if(data.categories){
+                    const modif = modifyCategory(data.categories, utilisateur._id)
+                    if (modif){
+                        return res.status(201).json({message: "Connexion réussie et stats enregistrées", id:utilisateur._id});
+                    }
+                }
+
                 return res.status(201).json({message: "Connexion réussie", id:utilisateur._id});
             }
         }

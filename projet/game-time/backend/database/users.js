@@ -5,7 +5,11 @@ const userSchema = new mongoose.Schema({
     password : String,
     mail : String,
     birthday : Date,
-    avatar: String
+    avatar: String,
+    category: {
+        type: Map,
+        of: Number
+    }
 });
 
 const User = mongoose.model("User", userSchema);

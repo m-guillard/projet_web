@@ -15,6 +15,15 @@ function Champ({nom, valeur, onChange, type_champ="text", mdp=""}){
      </ul>)
 }
 
+function CheckBox({valeur, onChange,}){
+    const v = Cookies.get("GT_profilStats");
+    let statsPresentes = false;
+    if (v){
+        statsPresentes = true;
+    }
+    return(<div className="checkbox">{statsPresentes && <input type="checkbox" checked={valeur} onChange={onChange} />}{statsPresentes &&<label for="stats">Associer les stats à votre compte</label>}</div>)
+}
+
 function Titre({nom}){
     return(<h3>{nom}</h3>)
 }
@@ -54,17 +63,35 @@ function Login(){
     const [erreurInscr, setErreurInscr] = useState("");
     const [erreurConn, setErreurConn] = useState("");
     const [imageSelected, setImageSelected] = useState(1);
+    const [lierStats, setLierStats] = useState(true);
 
     const imagesProfile = mapProfile(4);
 
     // Gestion connexion
+    const getCookies = () => {
+        const savedResults = Cookies.get("GT_profilStats");
+        if (savedResults){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     const handleSubmitConnexion = async (e) => {
         e.preventDefault();
+        let data_send = {};
+
+        if(lierStats){
+            const categories = JSON.parse(Cookies.get("GT_profilStats"));
+            data_send = {"page":'connexion',usernameConn, passwordConn, categories}
+        }else{
+            data_send = {"page":'connexion',usernameConn, passwordConn}
+        }
 
         const rep = await fetch('http://localhost:5000/login', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"page":'connexion',usernameConn, passwordConn}),
+            body: JSON.stringify(data_send),
         });
         const data = await rep.json();
         console.log(data);
@@ -83,12 +110,17 @@ function Login(){
     // Gestion inscription
     const handleSubmitInscription = async (e) => {
         e.preventDefault();
+        console.log(lierStats);
+        let categories = {};
+        if(lierStats){
+            categories = JSON.parse(Cookies.get("GT_profilStats"));
+        }
 
         const rep = await fetch('http://localhost:5000/login', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({"page":'inscription',
-                usernameInsc, mail, birthday, passwordInsc, verifPassword, imageSelected}),
+                usernameInsc, mail, birthday, passwordInsc, verifPassword, imageSelected, categories})
         });
         const data = await rep.json();
         console.log("Reponse du serveur :", data);
@@ -112,6 +144,7 @@ function Login(){
             <form onSubmit={handleSubmitConnexion}>
                 <Champ nom={"Nom d'utilisateur"} valeur={usernameConn} onChange={(e) => setUsernameConn(e.target.value)} />
                 <Champ nom={"Mot de passe"} mdp={"conn"} type_champ="password" valeur={passwordConn} onChange={(e) => setPasswordConn(e.target.value)}/>
+                <CheckBox valeur={lierStats} onChange={(e)=> setLierStats(e.target.valeur)} />
                 <Bouton nom={"Se connecter"} />
             </form>
         </div>
@@ -126,6 +159,7 @@ function Login(){
                 <Champ nom={"Date de naissance *"} type_champ="date" valeur={birthday} onChange={(e) => setBirthday(e.target.value)}/>
                 <Champ nom={"Mot de passe *"} mdp={"inscr"} type_champ="password" valeur={passwordInsc} onChange={(e) => setPasswordInsc(e.target.value)}/>
                 <Champ nom={"Confirmation du mot de passe *"} type_champ="password" valeur={verifPassword} onChange={(e) => setVerifPassword(e.target.value)}/>
+                <CheckBox valeur={lierStats} onChange={(e)=> setLierStats(e.target.valeur)} />
                 <Bouton nom={"S'inscrire"} />
             </form>
         </div>
