@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import "../styles/jeux.css";
 import Footer from "./Footer";
+import StarRating from "./StarRating"; // Assurez-vous d'avoir créé ce composant
 
 const Jeux = () => {
     const location = useLocation();
@@ -51,7 +52,7 @@ const Jeux = () => {
 
     useEffect(() => {
         handleSubmitJeux();
-    }, [gameName]); // Ajouter gameName comme dépendance pour relancer la requête si elle change
+    }, [gameName]);
 
     if (loading) return (
         <div>
@@ -81,19 +82,44 @@ const Jeux = () => {
         <div>
             <Header />
             <div className="card">
-                {game.cover_url ? (
-                    <img src={game.cover_url} alt={game.name} />
-                ) : (
-                    <p>Couverture non disponible</p>
-                )}
-                <h2>{game.name}</h2>
-                <p><strong>Description :</strong> {game.summary || "Aucune description disponible"}</p>
-                <p><strong>Date de sortie :</strong> {formatDate(game.first_release_date)}</p>
-                {game.platforms && Array.isArray(game.platforms) ? (
-                    <p><strong>Plateformes :</strong> {game.platforms.join(", ")}</p>
-                ) : (
-                    <p><strong>Plateformes :</strong> Information non disponible</p>
-                )}
+                <div className="game-header">
+                    <div className="card-image">
+                        {game.cover_url ? (
+                            <img src={game.cover_url.replace("t_thumb","t_1080p")} alt={game.name} />
+                        ) : (
+                            <p>Couverture non disponible</p>
+                        )}
+                    </div>
+                    
+                    <div className="game-info">
+                        <h2>{game.name}</h2>
+                        
+                        {/* Affichage de la note avec les étoiles */}
+                        {game.rating ? (
+                            <div>
+                                <StarRating rating={game.rating} />
+                                {game.rating_count && (
+                                    <div className="rating-count">Basé sur {game.rating_count} évaluations</div>
+                                )}
+                            </div>
+                        ) : (
+                            <p className="no-rating">Aucune évaluation disponible</p>
+                        )}
+                    </div>
+                </div>
+                
+                <div className="card-content">
+                    <p><strong>Description :</strong> {game.summary || "Aucune description disponible"}</p>
+                    <p><strong>Date de sortie :</strong> {formatDate(game.first_release_date)}</p>
+                    {game.genres && Array.isArray(game.genres) && (
+                        <p><strong>Genres :</strong> {game.genres.join(", ")}</p>
+                    )}
+                    {game.platforms && Array.isArray(game.platforms) ? (
+                        <p><strong>Plateformes :</strong> {game.platforms.join(", ")}</p>
+                    ) : (
+                        <p><strong>Plateformes :</strong> Information non disponible</p>
+                    )}
+                </div>
             </div>
             <Footer />
         </div>
