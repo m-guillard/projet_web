@@ -17,14 +17,11 @@ function Profile() {
     const [avatar, setAvatar] = useState('');
     const [datenaissance, setDatenaissance] = useState('');
     const [mail,setMail] = useState('');
-    const [content,setContent] = useState([]);
 
     useEffect(() => {
-        async function getGames(){
             // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
             let savedResults = Cookies.get("GT_profilStats");
-            const idUser = Cookies.get('authTrueGameTime');
-            if (savedResults && idUser) {
+            if (savedResults) {
                 try {
                     const parsedResults = JSON.parse(savedResults);
 
@@ -37,18 +34,6 @@ function Profile() {
                     console.error("Erreur lors du parsing des résultats:", error);
                 }
             }
-            const rep = await fetch('http://localhost:5000/ProfileGames', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"stats":savedResults, "idUser":idUser}),
-            });
-            const res = await rep.json();
-            console.log(res);
-            if (rep.ok){
-                setContent(res);
-            }
-        }
-        getGames();
     }, []);
 
     const handleDeconnexion = async (e) => {
@@ -123,7 +108,7 @@ function Profile() {
         </section>
         <section className="games-section">
             <h2>🎮 Jeux Personnalisés pour toi</h2>
-            <Card_Game type={["Personnalisé", finalResults]}/>
+            <Card_Game type={"Personnalisé"} page={"profile"}/>
             {/* <h2>✨ Jeux pour toi</h2>
             <Card_Game type={"découverte"}/>
             <h2>🔥 Jeux récemments joués</h2>
