@@ -8,9 +8,31 @@ footer {
     padding-top: 0.1px;
     padding-bottom: 0.1px;
     text-align: center;
+    width: 100%;
   }
   
 footer p {
     margin-top: 1vw;
     margin-bottom: 1vw;
+  }
+
+footer.horror {
+    background-color: #900909;
+  }
+
+footer.fighting {
+    background-color: #60330a;
+  }
+footer.shooter {
+    background-color: #4f4e4e;
+  }
+
+footer.simulator {
+    background-color: #056b00;
+  }
+footer.moba {
+    background-color: #b87d10;
+  }
+footer.rpg {
+    background-color: #00ae94;
   }

@@ -67,18 +67,18 @@ const Card_Game = ({type,page}) => {
     useEffect(() => {
         const fetchGames = async () => {
             try {
-        const rep = await fetch('http://localhost:5000/accueil', {
-            method: "POST",
+                const rep = await fetch('http://localhost:5000/accueil', {
+                    method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({type}) 
-        });
+                });
     
-        const data = await rep.json();
+                const data = await rep.json();
                 setGames(data);
             } catch (err) {
                 console.error("Erreur API:", err);
-        }
-    };
+            }
+        };
     
         fetchGames();
     }, [type]);

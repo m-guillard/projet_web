@@ -17,14 +17,14 @@
     background-color: #900909;
   }
 
-.header.action {
+.header.fighting {
     background-color: #60330a;
   }
-.header.fps {
+.header.shooter {
     background-color: #4f4e4e;
   }
 
-.header.sandbox {
+.header.simulator {
     background-color: #056b00;
   }
 .header.moba {
