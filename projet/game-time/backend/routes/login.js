@@ -22,11 +22,11 @@ const modifyCategory = async(categories, userId) => {
 
 const createUser = async(username, mail, bday, pswd, path_avatar, categories) => {
     console.log("Catégories reçues dans createUser :", categories);
-
+    let mapCategory
     try{
-    const mapCategory = new Map(
+        mapCategory = new Map(
         categories.map(item => [item.category, item.score])
-      )
+        )
     } catch {
         mapCategory = {};
     }

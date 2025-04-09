@@ -20,7 +20,7 @@ function Profile() {
     const [mail,setMail] = useState('');
 
     useEffect(() => {
-        async function getGames(){
+        async function getCookies(){
             // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
             const idUser = Cookies.get('authTrueGameTime');
             const repStat = await fetch('http://localhost:5000/statsProfile', {
@@ -53,18 +53,8 @@ function Profile() {
                     console.error("Erreur lors du parsing des résultats:", error);
                 }
             }
-            const rep = await fetch('http://localhost:5000/ProfileGames', {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({"stats":savedResults}),
-            });
-            const res = await rep.json();
-            console.log(res);
-            if (rep.ok){
-                setContent(res);
-            }
         }
-        getGames();
+        getCookies();
     }, []);
 
     const handleDeconnexion = async (e) => {
@@ -92,7 +82,8 @@ function Profile() {
     };
     
     useEffect(() => {getinfo()}, []);
-
+    const temp = Cookies.get("GT_profilStats");
+    if (temp){
     return(<div id="fenetre">
         <Header/>
         <div className="presentation">
@@ -139,7 +130,7 @@ function Profile() {
         </section>
         <section className="games-section">
             <h2>🎮 Jeux Personnalisés pour toi</h2>
-            <Card_Game type={"Personnalisé"}/>
+            <Card_Game type={"Personnalisé"}page={"profile"}/>
             {/* <h2>✨ Jeux pour toi</h2>
             <Card_Game type={"découverte"}/>
             <h2>🔥 Jeux récemments joués</h2>
@@ -147,6 +138,7 @@ function Profile() {
         </section>
         <Footer />
     </div>)
+    }
 }
 
 export default Profile;

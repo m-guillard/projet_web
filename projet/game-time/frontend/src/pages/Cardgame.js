@@ -7,12 +7,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Card_Game = ({type,page}) => {
 
-
     const [index, setIndex] = useState(0);
     const [games,setGames] = useState([]);
-    const [content,setContent] = useState([{cover_url:null}]);
+    const [content,setContent] = useState([]);
     const navigate = useNavigate();
-    //faire demande de contents en backend dépendant du type qu'on veut:
     const nmb_len_total_cards = 10;
 
     const Arrow = ({direction, handleClick}) => {
@@ -34,7 +32,7 @@ const Card_Game = ({type,page}) => {
         console.log(title);
     }
       
-    /*useEffect(() => {
+    useEffect(() => {
         async function getGames(){
             // Récupérer les résultats enregistrés dans les cookies ou à partir du backend
             let savedResults = Cookies.get("GT_profilStats");
@@ -61,8 +59,10 @@ const Card_Game = ({type,page}) => {
                 setContent(res);
             }
         }
-        getGames()
-    }, []);*/
+        if (type == "Personnalisé"){
+            getGames();
+        }
+    }, [type]);
 
 
     useEffect(() => {
@@ -90,21 +90,21 @@ const Card_Game = ({type,page}) => {
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
                 <Card className="game-card" onClick={() => navigate("/Jeux", { state: { gameName: games[index].name } })} sx={{borderRadius:"2vw"}} >
                     <CardMedia component="img" src={games[index].cover_url} />
-                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{games[index].title}</Typography>
+                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw", backgroundColor:"#00000055"}}>{games[index].title}</Typography>
                 </Card>
                 <Card className="game-card midcard" onClick={() => navigate("/Jeux", { state: { gameName: games[(index+1)%nmb_len_total_cards].name } })} sx={{borderRadius:"2vw"}}>
                     <CardMedia component="img" src={games[(index+1)%nmb_len_total_cards].cover_url} />
-                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{games[(index+1)%nmb_len_total_cards].title}</Typography>
+                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw", backgroundColor:"#00000055"}}>{games[(index+1)%nmb_len_total_cards].title}</Typography>
                 </Card>
                 <Card className="game-card lastcard" onClick={() => navigate("/Jeux", { state: { gameName: games[(index+1)%nmb_len_total_cards].name } })} sx={{borderRadius:"2vw"}}>
                     <CardMedia component="img" src={games[(index+2)%nmb_len_total_cards].cover_url} />
-                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw"}}>{games[(index+2)%nmb_len_total_cards].title}</Typography>
+                    <Typography sx={{position:"absolute", left:"50%", top:"50%", transform:"translate(-50%,-50%)", color:"#ffffff", backdropFilter:"blur(2px)", borderRadius:"0.4vw", backgroundColor:"#00000055"}}>{games[(index+2)%nmb_len_total_cards].title}</Typography>
                 </Card>
             <Arrow direction={"right"} handleClick={() => ArrowClick("right")}/>
         </div>
     )}
-    /*if (content.length>0 && page=="profile"){       
-        return(
+    if (content.length>0 && page=="profile"){       
+    return(
         <div className="games-grid">
             <Arrow direction={"left"} handleClick={() => ArrowClick("left")}/>
                 <Card className="game-card" onClick={() => CardClick(content[index])} sx={{borderRadius:"2vw"}} >
@@ -121,7 +121,7 @@ const Card_Game = ({type,page}) => {
                 </Card>
             <Arrow direction={"right"} handleClick={() => ArrowClick("right")}/>
         </div>
-    )}*/
+    )}
 }
 
 export default Card_Game;
