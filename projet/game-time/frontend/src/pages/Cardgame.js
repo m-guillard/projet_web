@@ -26,11 +26,6 @@ const Card_Game = ({type,page}) => {
         const newIndex = (index + increment + nmb_len_total_cards) % nmb_len_total_cards;
         setIndex(newIndex);
     }
-
-    const CardClick = (content) =>{
-        const {cover_url, title} = content;
-        console.log(title);
-    }
       
     useEffect(() => {
         async function getGames(){
