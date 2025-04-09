@@ -25,8 +25,7 @@ export default function Theme (){
             <Card_Game type={"tendances"}/>
             </section>
 
-      </div>
-      <Footer />
+            <Footer genre={genre}/>
       </div>
     )
 }

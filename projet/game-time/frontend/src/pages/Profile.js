@@ -12,12 +12,12 @@ import Footer from "./Footer";
 
 function Profile() {
     const navigate = useNavigate();
+
     const [finalResults, setFinalResults] = useState([]);
     const [avatarname, setAvatarname] = useState('');
     const [avatar, setAvatar] = useState('');
     const [datenaissance, setDatenaissance] = useState('');
     const [mail,setMail] = useState('');
-    const [content,setContent] = useState([]);
 
     useEffect(() => {
         async function getGames(){
@@ -139,7 +139,7 @@ function Profile() {
         </section>
         <section className="games-section">
             <h2>🎮 Jeux Personnalisés pour toi</h2>
-            <Card_Game type={["Personnalisé", finalResults]}/>
+            <Card_Game type={"Personnalisé"}/>
             {/* <h2>✨ Jeux pour toi</h2>
             <Card_Game type={"découverte"}/>
             <h2>🔥 Jeux récemments joués</h2>
